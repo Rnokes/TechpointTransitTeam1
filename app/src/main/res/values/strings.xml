@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Transit App</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="button_sign_in">Sign In</string>
+    <string name="title_bus_pass">Bus Pass</string>
+    <string name="title_bus_map">Bas Map</string>
+    <string name="title_bus_notifications">Bus Notifications</string>
+    <string name="input_email">Email</string>
+    <string name="input_pass">Password</string>
 </resources>
