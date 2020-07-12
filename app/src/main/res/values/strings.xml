@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">TranSync</string>
+    <string name="bus_icon_desc">Bus Icon</string>
+    <string name="user_hint">Enter Email</string>
+    <string name="pass_hint">Enter Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="forgot_info">Forgot Email/Password?</string>
+    <string name="no_acc_button">Sign Up</string>
+    <string name="no_acc_info">Don\'t Already Have an Account?</string>
+    <string name="bus_pull_desc">Show Current Pass</string>
+    <string name="main_menu_desc">Show Main Menu</string>
+    <string name="err">Error</string>
+
+    <string name="my_alerts">My Alerts</string>
+    <string name="my_bus_passes">My Bus Passes</string>
+    <string name="buy_a_pass">Purchase Bus Passes</string>
+    <string name="my_routes">My Routes</string>
+    <string name="all_routes">All Routes</string>
+    <string name="route_map">Route Map</string>
+    <string name="report">Report an Issue</string>
+
+    <string name="purchase_desc">Purchase a Bus Pass</string>
+
+    <string name="daily"> Daily Pass</string>
+    <string name="weekly"> Weekly Pass</string>
+    <string name="monthly"> Monthly Pass</string>
+</resources>

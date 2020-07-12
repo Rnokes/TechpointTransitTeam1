@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3A3B3E"
+    tools:context=".SignIn">
+
+    <Button
+        android:id="@+id/signin_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="244dp"
+        android:layout_marginTop="439dp"
+        android:backgroundTint="#C2EA79"
+        android:text="@string/sign_in"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/info_forget"
+        android:layout_width="168dp"
+        android:layout_height="13dp"
+        android:layout_marginBottom="304dp"
+        android:layout_marginEnd="193dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="414dp"
+        android:background="#3A3B3E"
+        android:backgroundTint="#3A3B3E"
+        android:text="@string/forgot_info"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SmallSp" />
+
+    <Button
+        android:id="@+id/acc_info"
+        android:layout_width="168dp"
+        android:layout_height="13dp"
+        android:layout_marginBottom="178dp"
+        android:layout_marginEnd="122dp"
+        android:layout_marginStart="121dp"
+        android:layout_marginTop="540dp"
+        android:background="#3A3B3E"
+        android:backgroundTint="#3A3B3E"
+        android:text="@string/no_acc_info"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SmallSp" />
+
+    <Button
+        android:id="@+id/signup_button"
+        android:layout_width="200dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="115dp"
+        android:layout_marginTop="562dp"
+        android:backgroundTint="#47978B"
+        android:text="@string/no_acc_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editUserText"
+        android:layout_width="287dp"
+        android:layout_height="31dp"
+        android:autofillHints="false"
+        android:background="#FFFFFF"
+        android:ems="10"
+        android:hint="@string/user_hint"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/user_outline"
+        app:layout_constraintEnd_toStartOf="@+id/user_outline"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/user_outline"
+        app:layout_constraintTop_toBottomOf="@+id/user_outline" />
+
+    <EditText
+        android:id="@+id/editSignInPass"
+        android:layout_width="287dp"
+        android:layout_height="31dp"
+        android:autofillHints="false"
+        android:background="@android:color/background_light"
+        android:backgroundTint="#FAF8F8"
+        android:ems="10"
+        android:foregroundTint="#FDFCFC"
+        android:hint="@string/pass_hint"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/pass_outline"
+        app:layout_constraintEnd_toStartOf="@+id/pass_outline"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/pass_outline"
+        app:layout_constraintTop_toBottomOf="@+id/pass_outline" />
+
+    <ImageView
+        android:id="@+id/newbus"
+        android:layout_width="115dp"
+        android:layout_height="167dp"
+        android:layout_marginBottom="485dp"
+        android:layout_marginTop="79dp"
+        android:contentDescription="@string/bus_icon_desc"
+        android:src="@drawable/newbus"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/user_outline"
+        android:layout_width="298dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="381dp"
+        android:layout_marginTop="309dp"
+        android:background="@drawable/orange_rectangle"
+        android:foregroundTint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/pass_outline"
+        android:layout_width="298dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="317dp"
+        android:layout_marginTop="373dp"
+        android:background="@drawable/orange_rectangle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
