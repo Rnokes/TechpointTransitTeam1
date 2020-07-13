@@ -96,7 +96,6 @@ public class SignIn extends Activity {
                     //TODO: Add a pop up saying incorrect input, and set these listeners up in a loop.
                     System.out.println("Incorrect login given");
                 }
-
             }
         });
 
