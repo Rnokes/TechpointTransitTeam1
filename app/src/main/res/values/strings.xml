@@ -21,7 +21,10 @@
 
     <string name="purchase_desc">Purchase a Bus Pass</string>
 
-    <string name="daily"> Daily Pass</string>
-    <string name="weekly"> Weekly Pass</string>
-    <string name="monthly"> Monthly Pass</string>
+    <string name="daily"> \tDaily Pass</string>
+    <string name="weekly"> \tWeekly Pass</string>
+    <string name="monthly"> \tMonthly Pass</string>
+
+    <string name="buy">Purchase</string>
+    <string name="diff_pass">Choose a Different Pass</string>
 </resources>

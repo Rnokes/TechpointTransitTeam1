@@ -58,7 +58,7 @@ public class SignIn extends Activity {
         }).start();
 
         try {
-            sleep(200);
+            sleep(800);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
