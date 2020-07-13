@@ -120,30 +120,34 @@ public class SignIn extends Activity {
         System.out.println("Login Call Using Creds: " + email + ", " + pass);
 
         ResultSet rs = null;
+        int out = 0;
 
         try {
-            rs = dbCall("SELECT email, password,CASE WHEN email like '+ email +' AND password like '+ pass' THEN = 1 ELSE 0 END FROM users ");
+            rs = dbCall("SELECT CASE WHEN email like \'" + email + "\' AND password like \'" + pass + "\' THEN 1 ELSE 0 END FROM users");
+            while (rs.next()) {
+                out = rs.getInt(1);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        // Iterate through rs
-
-        try {
-            rs = dbCall("SELECT email, password,CASE WHEN email like '+ email +' AND password like '+ pass' THEN = 1 ELSE 0 END FROM users ");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        // Iterate through rs
-
-        if (emailCorrect && passCorrect) {
+        if (out == 1) {
             // Call the db again and request the userid of the user/pass combo
-            userid = 1;
+            try {
+                rs = dbCall("SELECT userid FROM users WHERE email like \'" + email + "\' AND password like \'" + pass + "\'");
+                while (rs.next()) {
+                    userid = rs.getInt(1);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            System.out.println("UserId: " + userid);
             return true;
         }
-
-        return true;
+        else {
+            return false;
+        }
     }
 
     public static ResultSet dbCall(String query) throws SQLException {
