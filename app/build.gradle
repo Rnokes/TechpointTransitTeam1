@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 29
+    android.ndkVersion  "21.0.6113669"
 
     defaultConfig {
         applicationId "com.example.transync"
@@ -22,6 +23,9 @@ android {
 }
 
 dependencies {
+
+    implementation 'com.paypal.sdk:paypal-android-sdk:2.16.0'
+    implementation 'com.google.android.gms:play-services-wallet:18.0.0'
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
