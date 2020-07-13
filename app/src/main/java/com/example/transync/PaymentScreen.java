@@ -67,13 +67,13 @@ public class PaymentScreen extends Activity {
         TextView priceText = findViewById(R.id.pricedesc);
         TextView passType = findViewById(R.id.passtype);
         TextView indyGo = findViewById(R.id.indygo_desc);
-        Button pay = findViewById(R.id.purchase_buton);
+        Button pay = findViewById(R.id.purchase_button);
 
         priceText.setText("Price: $" + price +"0");
         passType.setText(type);
         indyGo.setText("This pass we will be valid for " + timeLength + " in the IndyGo bus system upon purchase.");
 
-        ImageButton payment = findViewById(R.id.purchase_buton);
+        Button payment = findViewById(R.id.purchase_button);
         payment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
