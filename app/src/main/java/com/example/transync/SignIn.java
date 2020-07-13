@@ -123,7 +123,7 @@ public class SignIn extends Activity {
         ResultSet rs = null;
 
         try {
-            rs = dbCall("SELECT email FROM users");
+            rs = dbCall("SELECT email, password,CASE WHEN email like '+ email +' AND password like '+ pass' THEN = 1 ELSE 0 END FROM users ");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -131,7 +131,7 @@ public class SignIn extends Activity {
         // Iterate through rs
 
         try {
-            rs = dbCall("SELECT email FROM users");
+            rs = dbCall("SELECT email, password,CASE WHEN email like '+ email +' AND password like '+ pass' THEN = 1 ELSE 0 END FROM users ");
         } catch (SQLException e) {
             e.printStackTrace();
         }
