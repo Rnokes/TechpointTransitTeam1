@@ -5,12 +5,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -114,16 +111,15 @@ public class SignIn extends Activity {
     }
 
     public static boolean login(String email, String pass) {
-        boolean emailCorrect = false;
-        boolean passCorrect = false;
 
         System.out.println("Login Call Using Creds: " + email + ", " + pass);
 
-        ResultSet rs = null;
+        ResultSet rs;
         int out = 0;
 
+        // First call to db to verify id
         try {
-            rs = dbCall("SELECT CASE WHEN email like \'" + email + "\' AND password like \'" + pass + "\' THEN 1 ELSE 0 END FROM users");
+            rs = dbCall("SELECT CASE WHEN email like '" + email + "' AND password like '" + pass + "' THEN 1 ELSE 0 END FROM users");
             while (rs.next()) {
                 out = rs.getInt(1);
             }
@@ -134,7 +130,7 @@ public class SignIn extends Activity {
         if (out == 1) {
             // Call the db again and request the userid of the user/pass combo
             try {
-                rs = dbCall("SELECT userid FROM users WHERE email like \'" + email + "\' AND password like \'" + pass + "\'");
+                rs = dbCall("SELECT userid FROM users WHERE email like '" + email + "' AND password like '" + pass + "'");
                 while (rs.next()) {
                     userid = rs.getInt(1);
                 }
@@ -151,8 +147,6 @@ public class SignIn extends Activity {
     }
 
     public static ResultSet dbCall(String query) throws SQLException {
-        ResultSet rs = null;
-        rs = stmt.executeQuery(query);
-        return rs;
+        return stmt.executeQuery(query);
     }
 }

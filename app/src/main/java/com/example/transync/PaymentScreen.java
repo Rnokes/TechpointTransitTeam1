@@ -1,5 +1,6 @@
 package com.example.transync;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import static com.example.transync.PurchaseScreen.busTypePurchased;
 
 public class PaymentScreen extends Activity {
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,8 +75,7 @@ public class PaymentScreen extends Activity {
         passType.setText(type);
         indyGo.setText("This pass we will be valid for " + timeLength + " in the IndyGo bus system upon purchase.");
 
-        Button payment = findViewById(R.id.purchase_button);
-        payment.setOnClickListener(new View.OnClickListener() {
+        pay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
