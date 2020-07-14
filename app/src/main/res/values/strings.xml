@@ -31,4 +31,6 @@
     <string name="future_payment_purchase">Future Payment Purchase</string>
     <string name="future_payment_consent">Future Payment Consent</string>
     <string name="buy_a_thing">Buy a Thing</string>
+    <string name="incorrect_login_please_try_again">Incorrect Login, Please Try Again</string>
+    <string name="registration">Registration</string>
 </resources>
