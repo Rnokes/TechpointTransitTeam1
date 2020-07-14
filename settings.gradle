@@ -1,2 +1,3 @@
+include ':PayPalAndroidSDK-2.16.0'
 include ':app'
 rootProject.name = "Transync"

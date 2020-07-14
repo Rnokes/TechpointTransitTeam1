@@ -27,4 +27,8 @@
 
     <string name="buy">Purchase</string>
     <string name="diff_pass">Choose a Different Pass</string>
+    <string name="profile_sharing_consent">Profile Sharing Consent</string>
+    <string name="future_payment_purchase">Future Payment Purchase</string>
+    <string name="future_payment_consent">Future Payment Consent</string>
+    <string name="buy_a_thing">Buy a Thing</string>
 </resources>
