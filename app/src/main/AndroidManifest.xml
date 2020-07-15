@@ -38,6 +38,7 @@
         <activity android:name=".HomeScreen" />
         <activity android:name=".PurchaseScreen" />
         <activity android:name=".PaymentScreen" />
+        <activity android:name=".ReportScreen" />
         <activity android:name=".PassScreen" />
         <activity android:name=".SignUp" />
         <activity android:name=".RegComp" />
