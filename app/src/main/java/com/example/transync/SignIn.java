@@ -131,6 +131,9 @@ public class SignIn extends Activity {
             rs = dbCall("SELECT CASE WHEN email like '" + email + "' AND password like '" + pass + "' THEN 1 ELSE 0 END FROM users");
             while (rs.next()) {
                 out = rs.getInt(1);
+                if (out == 1) {
+                    break;
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();

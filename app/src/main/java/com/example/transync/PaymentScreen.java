@@ -17,11 +17,14 @@ import android.widget.Toast;
 import org.json.JSONException;
 
 import java.math.BigDecimal;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 import static com.example.transync.PurchaseScreen.busTypePurchased;
+import static com.example.transync.SignIn.stmt;
+import static com.example.transync.SignIn.userid;
 
 public class PaymentScreen extends Activity {
 
@@ -211,7 +214,7 @@ public class PaymentScreen extends Activity {
                         paymentSucceedToDB();
                         displayResultText("PaymentConfirmation info received from PayPal");
 
-                    } catch (JSONException e) {
+                    } catch (JSONException | SQLException e) {
                         Log.e(TAG, "an extremely unlikely failure occurred: ", e);
                     }
                 }
@@ -225,24 +228,30 @@ public class PaymentScreen extends Activity {
         }
     }
 
-    private void paymentSucceedToDB() {
+    private void paymentSucceedToDB() throws SQLException {
 
         // Create throw to database
         // Need to send that the user has bought pass
         switch(busTypePurchased) {
             case 1:
                 // Daily
-
+                stmt.executeUpdate("UPDATE users " +
+                        "SET buspassid_fk='2', expirationdate= current_timestamp + interval '24 hours' " +
+                        "WHERE userid=" +  userid );
                 break;
 
             case 2:
                 // Weekly
-
+                stmt.executeUpdate("UPDATE users " +
+                        "SET buspassid_fk='3', expirationdate= current_timestamp + interval '7 days' " +
+                        "WHERE userid=" +  userid );
                 break;
 
             case 3:
                 // Monthly
-
+                stmt.executeUpdate("UPDATE users " +
+                        "SET buspassid_fk='4', expirationdate= current_timestamp + interval '31 days' " +
+                        "WHERE userid=" +  userid );
                 break;
 
             default:
