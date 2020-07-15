@@ -33,4 +33,8 @@
     <string name="buy_a_thing">Buy a Thing</string>
     <string name="incorrect_login_please_try_again">Incorrect Login, Please Try Again</string>
     <string name="registration">Registration</string>
+    <string name="register">Register</string>
+    <string name="displaybox">DisplayBox</string>
+    <string name="first_name">First Name...</string>
+    <string name="name">Name</string>
 </resources>

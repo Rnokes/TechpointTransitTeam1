@@ -129,26 +129,12 @@ public class PaymentScreen extends Activity {
     }
 
     public void onBuyPressed() {
-        /*
-         * PAYMENT_INTENT_SALE will cause the payment to complete immediately.
-         * Change PAYMENT_INTENT_SALE to
-         *   - PAYMENT_INTENT_AUTHORIZE to only authorize payment and capture funds later.
-         *   - PAYMENT_INTENT_ORDER to create a payment for authorization and capture
-         *     later via calls from your server.
-         *
-         * Also, to include additional payment details and an item list, see getStuffToBuy() below.
-         */
-        PayPalPayment thingToBuy = getPassToBuy(PayPalPayment.PAYMENT_INTENT_SALE);
 
-        /*
-         * See getStuffToBuy(..) for examples of some available payment options.
-         */
+        PayPalPayment thingToBuy = getPassToBuy(PayPalPayment.PAYMENT_INTENT_SALE);
 
         Intent intent = new Intent(PaymentScreen.this, PaymentActivity.class);
 
-        // send the same configuration for restart resiliency
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
-
         intent.putExtra(PaymentActivity.EXTRA_PAYMENT, thingToBuy);
 
         startActivityForResult(intent, REQUEST_CODE_PAYMENT);
@@ -187,12 +173,29 @@ public class PaymentScreen extends Activity {
         return new PayPalOAuthScopes(scopes);
     }
 
+    @SuppressLint("SetTextI18n")
     protected void displayResultText(String result) {
-        ((TextView)findViewById(R.id.resultText)).setText("Result : " + result + "\nReturning to Main Menu");
+        ((TextView)findViewById(R.id.resultText)).setText("Result : " + result);
         Toast.makeText(
                 getApplicationContext(),
                 result, Toast.LENGTH_LONG)
                 .show();
+
+        findViewById(R.id.passtype).setVisibility(View.INVISIBLE);
+        findViewById(R.id.pricedesc).setVisibility(View.INVISIBLE);
+        findViewById(R.id.indygo_desc).setVisibility(View.INVISIBLE);
+        findViewById(R.id.purchase_button).setVisibility(View.INVISIBLE);
+
+        Button back = findViewById(R.id.back_button);
+        back.setText("");
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(PaymentScreen.this, PassScreen.class);
+                startActivity(i);
+            }
+        });
+
     }
 
 
@@ -206,17 +209,9 @@ public class PaymentScreen extends Activity {
                     try {
                         Log.i(TAG, confirm.toJSONObject().toString(4));
                         Log.i(TAG, confirm.getPayment().toJSONObject().toString(4));
-                        /**
-                         *  TODO: send 'confirm' (and possibly confirm.getPayment() to your server for verification
-                         * or consent completion.
-                         * See https://developer.paypal.com/webapps/developer/docs/integration/mobile/verify-mobile-payment/
-                         * for more details.
-                         *
-                         * For sample mobile backend interactions, see
-                         * https://github.com/paypal/rest-api-sdk-python/tree/master/samples/mobile_backend
-                         */
-                        displayResultText("PaymentConfirmation info received from PayPal");
 
+                        paymentSucceedToDB();
+                        displayResultText("PaymentConfirmation info received from PayPal");
 
                     } catch (JSONException e) {
                         Log.e(TAG, "an extremely unlikely failure occurred: ", e);
@@ -229,76 +224,37 @@ public class PaymentScreen extends Activity {
                         TAG,
                         "An invalid Payment or PayPalConfiguration was submitted. Please see the docs.");
             }
-        } else if (requestCode == REQUEST_CODE_FUTURE_PAYMENT) {
-            if (resultCode == Activity.RESULT_OK) {
-                PayPalAuthorization auth =
-                        data.getParcelableExtra(PayPalFuturePaymentActivity.EXTRA_RESULT_AUTHORIZATION);
-                if (auth != null) {
-                    try {
-                        Log.i("FuturePaymentExample", auth.toJSONObject().toString(4));
-
-                        String authorization_code = auth.getAuthorizationCode();
-                        Log.i("FuturePaymentExample", authorization_code);
-
-                        sendAuthorizationToServer(auth);
-                        displayResultText("Future Payment code received from PayPal");
-
-                    } catch (JSONException e) {
-                        Log.e("FuturePaymentExample", "an extremely unlikely failure occurred: ", e);
-                    }
-                }
-            } else if (resultCode == Activity.RESULT_CANCELED) {
-                Log.i("FuturePaymentExample", "The user canceled.");
-            } else if (resultCode == PayPalFuturePaymentActivity.RESULT_EXTRAS_INVALID) {
-                Log.i(
-                        "FuturePaymentExample",
-                        "Probably the attempt to previously start the PayPalService had an invalid PayPalConfiguration. Please see the docs.");
-            }
-        } else if (requestCode == REQUEST_CODE_PROFILE_SHARING) {
-            if (resultCode == Activity.RESULT_OK) {
-                PayPalAuthorization auth =
-                        data.getParcelableExtra(PayPalProfileSharingActivity.EXTRA_RESULT_AUTHORIZATION);
-                if (auth != null) {
-                    try {
-                        Log.i("ProfileSharingExample", auth.toJSONObject().toString(4));
-
-                        String authorization_code = auth.getAuthorizationCode();
-                        Log.i("ProfileSharingExample", authorization_code);
-
-                        sendAuthorizationToServer(auth);
-                        displayResultText("Profile Sharing code received from PayPal");
-
-                    } catch (JSONException e) {
-                        Log.e("ProfileSharingExample", "an extremely unlikely failure occurred: ", e);
-                    }
-                }
-            } else if (resultCode == Activity.RESULT_CANCELED) {
-                Log.i("ProfileSharingExample", "The user canceled.");
-            } else if (resultCode == PayPalFuturePaymentActivity.RESULT_EXTRAS_INVALID) {
-                Log.i(
-                        "ProfileSharingExample",
-                        "Probably the attempt to previously start the PayPalService had an invalid PayPalConfiguration. Please see the docs.");
-            }
         }
     }
 
-    private void sendAuthorizationToServer(PayPalAuthorization authorization) {
+    private void paymentSucceedToDB() {
 
-        /**
-         * TODO: Send the authorization response to your server, where it can
-         * exchange the authorization code for OAuth access and refresh tokens.
-         *
-         * Your server must then store these tokens, so that your server code
-         * can execute payments for this user in the future.
-         *
-         * A more complete example that includes the required app-server to
-         * PayPal-server integration is available from
-         * https://github.com/paypal/rest-api-sdk-python/tree/master/samples/mobile_backend
-         */
+        // Create throw to database
+        // Need to send that the user has bought pass
+        switch(busTypePurchased) {
+            case 1:
+                // Daily
 
-        // Throw to db
+                break;
+
+            case 2:
+                // Weekly
+
+                break;
+
+            case 3:
+                // Monthly
+
+                break;
+
+            default:
+                System.out.println("No Pass Specified, Returning to Main Menu");
+                Intent i = new Intent(PaymentScreen.this, HomeScreen.class);
+                startActivity(i);
+        }
 
     }
+
 
     @Override
     public void onDestroy() {

@@ -90,14 +90,21 @@ public class SignIn extends Activity {
                     startActivity(i);
                 }
                 else {
-                    //TODO: Add a pop up saying incorrect input, and set these listeners up in a loop.
                     System.out.println("Incorrect login given");
                     findViewById(R.id.incorrectSignIn).setVisibility(View.VISIBLE);
-                    // Test
                 }
             }
         });
 
+
+        Button signUp = findViewById(R.id.signup_button);
+        signUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(SignIn.this, SignUp.class);
+                startActivity(i);
+            }
+        });
 
     }
 
