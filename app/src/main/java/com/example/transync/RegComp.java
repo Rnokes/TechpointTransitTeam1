@@ -8,7 +8,6 @@ import android.widget.Button;
 
 public class RegComp extends Activity {
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

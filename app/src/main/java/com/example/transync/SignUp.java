@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.sql.SQLException;
+
+import static com.example.transync.SignIn.stmt;
+
 public class SignUp extends Activity {
 
     @Override
@@ -39,16 +43,18 @@ public class SignUp extends Activity {
 
                 // Database Calls
 
+                try {
+                    stmt.executeUpdate("INSERT INTO users (firstname, lastname, email, password, phone, sms)" +
+                            "VALUES('" + firstName + "','" + lastName + "','" + email + "','"+ password + "','"+ phone +"','yes')");
+                } catch (SQLException e) {
+                    System.out.println("Insertion failed.");
+                    e.printStackTrace();
+                }
 
 
-                Button register = findViewById(R.id.register_button);
-                register.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent i = new Intent(SignUp.this, RegComp.class);
-                        startActivity(i);
-                    }
-                });
+                Intent i = new Intent(SignUp.this, RegComp.class);
+                startActivity(i);
+
 
             }
         });
