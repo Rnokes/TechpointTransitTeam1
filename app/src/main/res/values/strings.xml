@@ -17,7 +17,7 @@
     <string name="my_routes">My Routes</string>
     <string name="all_routes">All Routes</string>
     <string name="route_map">Route Map</string>
-    <string name="report">Report an Issue</string>
+
 
     <string name="purchase_desc">Purchase a Bus Pass</string>
 
@@ -35,6 +35,12 @@
     <string name="registration">Registration</string>
     <string name="register">Register</string>
     <string name="displaybox">DisplayBox</string>
-    <string name="first_name">First Name...</string>
+    <string name="first_name">First Name…</string>
     <string name="name">Name</string>
+
+    <string name="report_an_issue">Report An Issue</string>
+    <string name="customer_service">For customer service help, please call: \n (XXX) XXX-XXXX</string>
+    <string name="report_issue">Report an issue or change in a bus route:</string>
+    <string name="type_hint">Type Here</string>
+    <string name="report_text">Report</string>
 </resources>
