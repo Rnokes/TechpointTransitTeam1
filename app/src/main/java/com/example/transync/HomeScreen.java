@@ -58,6 +58,14 @@ public class HomeScreen extends Activity {
                 startActivity(i);
             }
         });
+        Button report = findViewById(R.id.report_button);
+        report.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(HomeScreen.this, ReportScreen.class);
+                startActivity(i);
+            }
+        });
 
 
 
