@@ -19,12 +19,36 @@ public class SignUp extends Activity {
             @Override
             public void onClick(View view) {
 
-                EditText user = (EditText) findViewById(R.id.firstNameEntry);
-                final String email = user.getText().toString();
+                EditText fname = (EditText) findViewById(R.id.firstNameEntry);
+                final String firstName = fname.getText().toString();
 
-                EditText pass = (EditText) findViewById(R.id.editSignInPass);
+                EditText lname = (EditText) findViewById(R.id.lastNameEntry);
+                final String lastName = lname.getText().toString();
+
+                EditText dobEnt = (EditText) findViewById(R.id.dobEntry);
+                final String dob = dobEnt.getText().toString();
+
+                EditText emailEnt = (EditText) findViewById(R.id.emailEntry);
+                final String email = emailEnt.getText().toString();
+
+                EditText phoneEnt = (EditText) findViewById(R.id.editTextPhone);
+                final String phone = phoneEnt.getText().toString();
+
+                EditText pass = (EditText) findViewById(R.id.editTextTextPassword);
                 final String password = pass.getText().toString();
 
+                // Database Calls
+
+
+
+                Button register = findViewById(R.id.register_button);
+                register.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent i = new Intent(SignUp.this, RegComp.class);
+                        startActivity(i);
+                    }
+                });
 
             }
         });

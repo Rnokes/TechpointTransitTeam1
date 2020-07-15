@@ -38,6 +38,9 @@
         <activity android:name=".HomeScreen" />
         <activity android:name=".PurchaseScreen" />
         <activity android:name=".PaymentScreen" />
+        <activity android:name=".PassScreen" />
+        <activity android:name=".SignUp" />
+        <activity android:name=".RegComp" />
 
         <meta-data
             android:name="com.google.android.actions"

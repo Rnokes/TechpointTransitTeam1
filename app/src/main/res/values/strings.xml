@@ -37,4 +37,16 @@
     <string name="displaybox">DisplayBox</string>
     <string name="first_name">First Name...</string>
     <string name="name">Name</string>
+    <string name="enter_last_name">Enter Last Name</string>
+    <string name="last_name">Last Name...</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="email">Email...</string>
+    <string name="enter_your_phone_number">Enter your phone number</string>
+    <string name="phone_number">Phone Number...</string>
+    <string name="enter_a_secure_password">Enter a Secure Password</string>
+    <string name="create_a_password">Create a Password...</string>
+    <string name="outline">outline</string>
+    <string name="return_to_sign_in">Return to Sign In</string>
+    <string name="an_email_has_been_sent_to_the_address_you_provided_please_follow_the_directions_provided_in_the_email_to_confirm_your_registration_once_confirmed_please_return_to_the_login_page_to_proceed">An email has been sent to the address you provided. Please follow the directions provided in the email to confirm your registration. Once confirmed, please return to the login page to proceed.</string>
+    <string name="check_your_email">Check Your Email!</string>
 </resources>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3A3B3E">
+
+    <Button
+        android:id="@+id/reg_comp_button"
+        android:layout_width="253dp"
+        android:layout_height="69dp"
+        android:layout_marginBottom="231dp"
+        android:layout_marginTop="435dp"
+        android:background="#C2EA79"
+        android:text="@string/return_to_sign_in"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="309dp"
+        android:layout_height="224dp"
+        android:layout_marginBottom="376dp"
+        android:layout_marginTop="131dp"
+        android:contentDescription="@string/outline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/orange_rectangle" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="298dp"
+        android:layout_height="214dp"
+        android:background="#FFFFFF"
+        android:contentDescription="@string/outline"
+        app:layout_constraintBottom_toTopOf="@+id/imageView9"
+        app:layout_constraintEnd_toStartOf="@+id/imageView9"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageView9"
+        app:layout_constraintTop_toBottomOf="@+id/imageView9"
+        app:srcCompat="@drawable/blue_rectangle" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="241dp"
+        android:layout_height="108dp"
+        android:layout_marginBottom="417dp"
+        android:text="@string/an_email_has_been_sent_to_the_address_you_provided_please_follow_the_directions_provided_in_the_email_to_confirm_your_registration_once_confirmed_please_return_to_the_login_page_to_proceed"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView8"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageView8" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="542dp"
+        android:layout_marginTop="157dp"
+        android:text="@string/check_your_email"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView8"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageView8"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -43,8 +43,6 @@ public class PaymentScreen extends Activity {
     private static final String CONFIG_CLIENT_ID = "AS43kxQznFJDM1czIi654wsxL6QxzsFQ51EtuaDkqwGZdKkwymYuOpN2WaaTC9lFlVcWDrLMCwq5kZom";
 
     private static final int REQUEST_CODE_PAYMENT = 1;
-    private static final int REQUEST_CODE_FUTURE_PAYMENT = 2;
-    private static final int REQUEST_CODE_PROFILE_SHARING = 3;
 
     private static PayPalConfiguration config = new PayPalConfiguration()
             .environment(CONFIG_ENVIRONMENT)
@@ -187,7 +185,7 @@ public class PaymentScreen extends Activity {
         findViewById(R.id.purchase_button).setVisibility(View.INVISIBLE);
 
         Button back = findViewById(R.id.back_button);
-        back.setText("");
+        back.setText("View My Bus Passes");
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
