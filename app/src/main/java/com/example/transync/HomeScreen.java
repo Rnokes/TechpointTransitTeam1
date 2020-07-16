@@ -41,10 +41,10 @@ public class HomeScreen extends Activity {
 
         String dbNameCall = "Hello " + first + " " + last + "!";
 
-        TextView displayName = (TextView) findViewById(R.id.nameDisplay);
+        TextView displayName = findViewById(R.id.nameDisplay);
         displayName.setText(dbNameCall);
 
-        final TextView timedisp = (TextView) findViewById(R.id.texttimedisp);
+        final TextView timedisp = findViewById(R.id.texttimedisp);
         DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss z");
         String date = df.format(Calendar.getInstance().getTime());
         timedisp.setText(date);
@@ -67,14 +67,21 @@ public class HomeScreen extends Activity {
             }
         });
         Button all_routes = findViewById(R.id.all_routes_button);
-        report.setOnClickListener(new View.OnClickListener() {
+        all_routes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(HomeScreen.this, AllRoutesScreen.class);
                 startActivity(i);
             }
         });
-
+        Button my_routes = findViewById(R.id.my_routes_button);
+        my_routes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(HomeScreen.this, MyRoutesScreen.class);
+                startActivity(i);
+        }
+    });
 
 
     }

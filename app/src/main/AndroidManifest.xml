@@ -40,6 +40,8 @@
         <activity android:name=".PaymentScreen" />
         <activity android:name=".ReportScreen" />
         <activity android:name=".PassScreen" />
+        <activity android:name=".MyRoutesScreen" />
+        <activity android:name=".AllRoutesScreen" />
         <activity android:name=".SignUp" />
         <activity android:name=".RegComp" />
 
