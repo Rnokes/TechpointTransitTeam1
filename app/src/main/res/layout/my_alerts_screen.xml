@@ -7,19 +7,7 @@
     android:layout_height="match_parent">
 
     <View
-        android:id="@+id/background"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorOrange"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/top_back"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <View
-        android:id="@+id/top_back"
+        android:id="@+id/top_back6"
         android:layout_width="417dp"
         android:layout_height="153dp"
         android:layout_marginBottom="578dp"
@@ -29,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/textView13"
         android:layout_width="109dp"
         android:layout_height="16dp"
         android:layout_marginStart="25dp"
@@ -48,7 +36,7 @@
         tools:ignore="SmallSp" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView14"
         android:layout_width="109dp"
         android:layout_height="16dp"
         android:layout_marginStart="270dp"
@@ -67,7 +55,7 @@
         tools:ignore="SmallSp" />
 
     <ImageButton
-        android:id="@+id/passButton"
+        android:id="@+id/passButton6"
         android:layout_width="82dp"
         android:layout_height="68dp"
         android:layout_marginStart="293dp"
@@ -85,7 +73,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
-        android:id="@+id/menubutton"
+        android:id="@+id/menubutton5"
         android:layout_width="87dp"
         android:layout_height="62dp"
         android:layout_marginStart="35dp"
@@ -100,7 +88,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/newbus"
+        android:id="@+id/newbus6"
         android:layout_width="68dp"
         android:layout_height="96dp"
         android:layout_marginStart="171dp"
@@ -117,70 +105,99 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/allRoutes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/my_routes"
-        android:textColor="@color/bus_icon_background"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/top_back" />
-
-    <Button
-        android:id="@+id/routeMap"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="@color/colorGreen"
-        android:text="@string/route_map"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/allRoutes" />
-
-    <Button
         android:id="@+id/myAlerts"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@color/colorGreen"
+        android:background="@color/colorOrange"
+        android:padding="5dp"
         android:text="@string/my_alerts"
-        android:textSize="18sp"
+        android:textAlignment="center"
+        android:textColor="@color/bus_icon_background"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/background"
-        app:layout_constraintTop_toBottomOf="@+id/routeMap" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_back6" />
 
     <ScrollView
-        android:id="@+id/scrollView"
+        android:id="@+id/scrollView2"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="220dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
-        app:layout_constraintBottom_toBottomOf="@+id/background"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/black_rectangle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myAlerts"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/todayText">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical" >
 
             <Button
-                android:id="@+id/route1"
+                android:id="@+id/button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:padding="20dp"
-                android:text="Button"
-                android:textAlignment="textStart"
-                android:textSize="18sp" />
-
+                android:layout_margin="5dp"
+                android:text="Button" />
         </LinearLayout>
     </ScrollView>
+
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="0dp"
+        android:layout_height="220dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/black_rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/todayText2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Button" />
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/todayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/today"
+        android:textColor="@color/colorText"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/scrollView2"
+        app:layout_constraintTop_toBottomOf="@+id/myAlerts" />
+
+    <TextView
+        android:id="@+id/todayText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/yesterday"
+        android:textColor="@color/colorText"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/scrollView3"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

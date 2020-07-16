@@ -117,7 +117,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/myRoutes"
+        android:id="@+id/allRoutes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -133,13 +133,13 @@
         android:id="@+id/routeMap"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:background="@color/colorGreen"
         android:text="@string/route_map"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myRoutes" />
+        app:layout_constraintTop_toBottomOf="@+id/allRoutes" />
 
     <ScrollView
         android:id="@+id/scrollView"
