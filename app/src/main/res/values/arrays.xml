@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name = "problemTypes">
+        <item>"Delayed Bus"</item>
+        <item>"Skipped Stop"</item>
+        <item>"Bus Cancelled"</item>
+        <item>"Other"</item>
+    </array>
+</resources>

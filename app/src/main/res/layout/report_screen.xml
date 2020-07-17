@@ -188,27 +188,10 @@
         android:textAlignment="textStart"
         android:textColor="@color/colorText"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/editUserText2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reportIssue" />
-
-    <EditText
-        android:id="@+id/editUserText2"
-        android:layout_width="360dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="10dp"
-        android:autofillHints="false"
-        android:background="@color/bus_icon_background"
-        android:ems="10"
-        android:foreground="@drawable/blue_rectangle"
-        android:hint="@string/user_hint"
-        android:inputType="textEmailAddress"
-        android:padding="10dp"
-        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/reportButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     <Button
         android:id="@+id/reportButton"
@@ -223,5 +206,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/bus_icon_background"
+        android:entries="@array/problemTypes"
+        android:foreground="@drawable/blue_rectangle"
+        android:padding="10dp"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reportIssue" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
