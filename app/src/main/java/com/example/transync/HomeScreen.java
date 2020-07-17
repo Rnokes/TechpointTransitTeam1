@@ -1,5 +1,6 @@
 package com.example.transync;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -40,14 +41,24 @@ public class HomeScreen extends Activity {
 
         String dbNameCall = "Hello " + first + " " + last + "!";
 
-        TextView displayName = (TextView) findViewById(R.id.nameDisplay);
+        TextView displayName = findViewById(R.id.nameDisplay);
         displayName.setText(dbNameCall);
 
-        final TextView timedisp = (TextView) findViewById(R.id.texttimedisp);
+        final TextView timedisp = findViewById(R.id.texttimedisp);
+        @SuppressLint("SimpleDateFormat")
         DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss z");
         String date = df.format(Calendar.getInstance().getTime());
         timedisp.setText(date);
 
+
+        ImageButton passButton = findViewById(R.id.passButton);
+        passButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(HomeScreen.this, PassScreen.class);
+                startActivity(i);
+            }
+        });
 
         Button purchase = findViewById(R.id.buy_pass_button);
         purchase.setOnClickListener(new View.OnClickListener() {
@@ -76,14 +87,6 @@ public class HomeScreen extends Activity {
             }
         });
 
-        ImageButton passButton = findViewById(R.id.passButton);
-        passButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(HomeScreen.this, PassScreen.class);
-                startActivity(i);
-            }
-        });
         Button all_routes = findViewById(R.id.all_routes_button);
         all_routes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,15 +95,15 @@ public class HomeScreen extends Activity {
                 startActivity(i);
             }
         });
+
         Button my_routes = findViewById(R.id.my_routes_button);
         my_routes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(HomeScreen.this, MyRoutesScreen.class);
                 startActivity(i);
-        }
-    });
-
+            }
+        });
 
     }
 
