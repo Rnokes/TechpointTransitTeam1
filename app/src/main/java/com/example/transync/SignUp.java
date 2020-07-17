@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import java.sql.SQLException;
+import java.util.Objects;
 
 import static com.example.transync.SignIn.stmt;
 
@@ -22,6 +23,8 @@ public class SignUp extends Activity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                findViewById(R.id.infoErr).setVisibility(View.INVISIBLE);
+                findViewById(R.id.passErr).setVisibility(View.INVISIBLE);
 
                 EditText fname = (EditText) findViewById(R.id.firstNameEntry);
                 final String firstName = fname.getText().toString();
@@ -29,32 +32,38 @@ public class SignUp extends Activity {
                 EditText lname = (EditText) findViewById(R.id.lastNameEntry);
                 final String lastName = lname.getText().toString();
 
-                EditText dobEnt = (EditText) findViewById(R.id.dobEntry);
-                final String dob = dobEnt.getText().toString();
-
                 EditText emailEnt = (EditText) findViewById(R.id.emailEntry);
                 final String email = emailEnt.getText().toString();
 
                 EditText phoneEnt = (EditText) findViewById(R.id.editTextPhone);
                 final String phone = phoneEnt.getText().toString();
 
-                EditText pass = (EditText) findViewById(R.id.editTextTextPassword);
-                final String password = pass.getText().toString();
+                EditText passS = (EditText) findViewById(R.id.passwordStart);
+                final String passStart = passS.getText().toString();
 
-                // Database Calls
+                EditText passE = (EditText) findViewById(R.id.passwordConfirm);
+                final String passConfirm = passE.getText().toString();
 
-                try {
-                    stmt.executeUpdate("INSERT INTO users (firstname, lastname, email, password, phone, sms)" +
-                            "VALUES('" + firstName + "','" + lastName + "','" + email + "','"+ password + "','"+ phone +"','yes')");
-                } catch (SQLException e) {
-                    System.out.println("Insertion failed.");
-                    e.printStackTrace();
+                if (Objects.equals(firstName, "") || Objects.equals(lastName, "") || Objects.equals(email, "") || Objects.equals(phone, "")) {
+                    System.out.println("Reg info entered incorrectly.");
+                    findViewById(R.id.infoErr).setVisibility(View.VISIBLE);
                 }
+                else if (!passStart.equals(passConfirm)) { // Passwords not matching
+                    System.out.println("Reg passwords do not match.");
+                    findViewById(R.id.passErr).setVisibility(View.VISIBLE);
+                }
+                else {  // Set calls to db and enter RegComp Screen
+                    try {
+                        stmt.executeUpdate("INSERT INTO users (firstname, lastname, email, password, phone, sms)" +
+                                "VALUES('" + firstName + "','" + lastName + "','" + email + "','" + passStart + "','" + phone + "','yes')");
+                    } catch (SQLException e) {
+                        System.out.println("Insertion failed.");
+                        e.printStackTrace();
+                    }
 
-
-                Intent i = new Intent(SignUp.this, RegComp.class);
-                startActivity(i);
-
+                    Intent i = new Intent(SignUp.this, RegComp.class);
+                    startActivity(i);
+                }
 
             }
         });

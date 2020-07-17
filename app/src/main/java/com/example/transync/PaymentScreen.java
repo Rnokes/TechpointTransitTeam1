@@ -70,6 +70,15 @@ public class PaymentScreen extends Activity {
             }
         });
 
+        ImageButton passButton = findViewById(R.id.passButton3);
+        passButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(PaymentScreen.this, PassScreen.class);
+                startActivity(i);
+            }
+        });
+
         Button back = findViewById(R.id.back_button);
         back.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -25,6 +25,15 @@ public class PurchaseScreen extends Activity {
             }
         });
 
+        ImageButton passButton = findViewById(R.id.passButton2);
+        passButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(PurchaseScreen.this, PassScreen.class);
+                startActivity(i);
+            }
+        });
+
         busTypePurchased = 0;
 
         Button daily = findViewById(R.id.daily_button);

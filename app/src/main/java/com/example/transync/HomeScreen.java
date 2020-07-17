@@ -5,10 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -41,10 +40,10 @@ public class HomeScreen extends Activity {
 
         String dbNameCall = "Hello " + first + " " + last + "!";
 
-        TextView displayName = findViewById(R.id.nameDisplay);
+        TextView displayName = (TextView) findViewById(R.id.nameDisplay);
         displayName.setText(dbNameCall);
 
-        final TextView timedisp = findViewById(R.id.texttimedisp);
+        final TextView timedisp = (TextView) findViewById(R.id.texttimedisp);
         DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss z");
         String date = df.format(Calendar.getInstance().getTime());
         timedisp.setText(date);
@@ -58,11 +57,30 @@ public class HomeScreen extends Activity {
                 startActivity(i);
             }
         });
+
+        Button pass = findViewById(R.id.my_pass_button);
+        pass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(HomeScreen.this, PassScreen.class);
+                startActivity(i);
+            }
+        });
+
         Button report = findViewById(R.id.report_button);
         report.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(HomeScreen.this, ReportScreen.class);
+                startActivity(i);
+            }
+        });
+
+        ImageButton passButton = findViewById(R.id.passButton);
+        passButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(HomeScreen.this, PassScreen.class);
                 startActivity(i);
             }
         });

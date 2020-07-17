@@ -55,6 +55,21 @@
     <string name="report_issue">Report an issue or change in a bus route:</string>
     <string name="type_hint">Type Here</string>
     <string name="report_text">Report</string>
+    <string name="page_log_in_page_transync">__page_log_in_page__transync</string>
+    <string name="internet_connection_is_not_available_please_try_again_when_you_have_a_signal">Internet Connection is Not Available, Please Try Again When You Have a Signal</string>
+    <string name="indygo">IndyGo</string>
+    <string name="qrholder">QRHolder</string>
+    <string name="spinner_holder">spinner_holder</string>
+    <string name="countholder">countHolder</string>
+    <string name="qrcode">QRCode</string>
+    <string name="select_an_active_pass">Select an Active Pass:</string>
+    <string name="regEmail">Email</string>
+    <string name="reg_phone_number">Phone Number</string>
+    <string name="reg_last_name">Last Name</string>
+    <string name="reg_first_name">First Name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="please_make_sure_passwords_match">Please Make Sure Passwords Match</string>
+    <string name="please_enter_all_information">Please Enter All Information</string>
     <string name="today">Today</string>
     <string name="yesterday">Yesterday</string>
 </resources>
