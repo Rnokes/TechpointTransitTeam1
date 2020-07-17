@@ -5,10 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -58,6 +56,16 @@ public class HomeScreen extends Activity {
                 startActivity(i);
             }
         });
+
+        Button pass = findViewById(R.id.my_pass_button);
+        pass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(HomeScreen.this, PassScreen.class);
+                startActivity(i);
+            }
+        });
+
         Button report = findViewById(R.id.report_button);
         report.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +75,14 @@ public class HomeScreen extends Activity {
             }
         });
 
-
+        ImageButton passButton = findViewById(R.id.passButton);
+        passButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(HomeScreen.this, PassScreen.class);
+                startActivity(i);
+            }
+        });
 
     }
 

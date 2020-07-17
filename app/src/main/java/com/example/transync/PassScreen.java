@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 public class PassScreen extends Activity {
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

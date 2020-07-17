@@ -16,6 +16,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import static java.lang.Thread.sleep;
 
@@ -36,6 +39,9 @@ public class SignIn extends Activity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
+        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss.ms").format(new Date());
+        System.out.println("Timestamp Start: " + timeStamp);
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -54,11 +60,26 @@ public class SignIn extends Activity {
             }
         }).start();
 
-        try {
-            sleep(800);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+
+        long initTime = System.currentTimeMillis();
+        while (stmt == null) {
+            if (System.currentTimeMillis() - initTime > 15000) {
+                    System.out.println("Db connection took too long.");
+                    findViewById(R.id.Internet_Failure).setVisibility(View.VISIBLE);
+                    Intent i = new Intent(SignIn.this, Splash.class);
+                    startActivity(i);
+            } else {
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
         }
+
+        timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss.ms").format(new Date());
+        System.out.println("Timestamp End: " + timeStamp);
+
 
         if (stmt == null) {
             System.out.println("Connection to db failed. Shutting Down...");

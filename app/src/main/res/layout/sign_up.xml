@@ -21,18 +21,48 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="276dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="138dp"
+        android:layout_marginTop="541dp"
+        android:background="#FFFFFF"
+        android:contentDescription="@string/displaybox"
+        android:src="@drawable/orange_rectangle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="276dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="138dp"
+        android:layout_marginTop="420dp"
+        android:background="#FFFFFF"
+        android:contentDescription="@string/displaybox"
+        android:src="@drawable/orange_rectangle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
         android:id="@+id/imageView2"
         android:layout_width="275dp"
         android:layout_height="50dp"
         android:layout_marginBottom="474dp"
         android:layout_marginTop="207dp"
         android:contentDescription="@string/displaybox"
+        android:src="@drawable/blue_rectangle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/blue_rectangle" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -46,13 +76,27 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/blue_rectangle" />
+        android:src="@drawable/blue_rectangle" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imageView5"
         android:layout_width="275dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="341dp"
+        android:layout_marginBottom="274dp"
+        android:layout_marginTop="275dp"
+        android:contentDescription="@string/displaybox"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/blue_rectangle" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="275dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="205dp"
         android:layout_marginTop="340dp"
         android:contentDescription="@string/displaybox"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -60,50 +104,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/blue_rectangle" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="275dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="274dp"
-        android:layout_marginTop="407dp"
-        android:contentDescription="@string/displaybox"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/blue_rectangle" />
-
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="276dp"
-        android:layout_height="52dp"
-        android:layout_marginBottom="138dp"
-        android:layout_marginTop="541dp"
-        android:background="#FFFFFF"
-        android:contentDescription="@string/displaybox"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/orange_rectangle" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="275dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="205dp"
-        android:layout_marginTop="476dp"
-        android:contentDescription="@string/displaybox"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/blue_rectangle" />
+        android:src="@drawable/blue_rectangle" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -114,18 +115,65 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="50dp"
         android:contentDescription="@string/bus_icon_desc"
+        android:src="@drawable/newbus"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/newbus" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/firstNameEntry"
+        android:layout_width="269dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:hint="@string/reg_first_name"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <EditText
+        android:id="@+id/passwordStart"
+        android:layout_width="267dp"
+        android:layout_height="43dp"
+        android:ems="10"
+        android:hint="@string/create_a_password"
+        android:importantForAutofill="no"
+        android:inputType="textPassword"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/imageView4"
+        app:layout_constraintEnd_toStartOf="@+id/imageView4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+    <EditText
+        android:id="@+id/passwordConfirm"
+        android:layout_width="267dp"
+        android:layout_height="42dp"
+        android:ems="10"
+        android:hint="@string/confirm_password"
+        android:importantForAutofill="no"
+        android:inputType="textPassword"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/imageView7"
+        app:layout_constraintEnd_toStartOf="@+id/imageView7"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageView7"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
     <EditText
         android:id="@+id/emailEntry"
         android:layout_width="266dp"
         android:layout_height="39dp"
         android:ems="10"
-        android:hint="@string/enter_your_email"
+        android:hint="@string/regEmail"
         android:importantForAutofill="no"
         android:inputType="textEmailAddress"
         android:textAlignment="textStart"
@@ -140,84 +188,38 @@
 
     <EditText
         android:id="@+id/editTextPhone"
-        android:layout_width="269dp"
-        android:layout_height="46dp"
-        android:layout_marginBottom="208dp"
-        android:layout_marginTop="477dp"
+        android:layout_width="266dp"
+        android:layout_height="41dp"
         android:ems="10"
-        android:hint="@string/enter_your_phone_number"
+        android:hint="@string/reg_phone_number"
         android:importantForAutofill="no"
         android:inputType="phone"
         android:textAlignment="textStart"
         android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/imageView6"
         app:layout_constraintEnd_toStartOf="@+id/imageView6"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageView6"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
     <EditText
         android:id="@+id/lastNameEntry"
         android:layout_width="265dp"
         android:layout_height="41dp"
         android:ems="10"
-        android:hint="@string/enter_last_name"
+        android:hint="@string/reg_last_name"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/imageView3"
         app:layout_constraintEnd_toStartOf="@+id/imageView3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
-    <EditText
-        android:id="@+id/dobEntry"
-        android:layout_width="264dp"
-        android:layout_height="38dp"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="date"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/imageView4"
-        app:layout_constraintEnd_toStartOf="@+id/imageView4"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        tools:ignore="LabelFor" />
-
-    <EditText
-        android:id="@+id/firstNameEntry"
-        android:layout_width="269dp"
-        android:layout_height="40dp"
-        android:ems="10"
-        android:hint="@string/first_name"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
-        app:layout_constraintEnd_toStartOf="@+id/imageView2"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-    <EditText
-        android:id="@+id/editTextTextPassword"
-        android:layout_width="263dp"
-        android:layout_height="37dp"
-        android:ems="10"
-        android:hint="@string/enter_a_secure_password"
-        android:importantForAutofill="no"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/imageView7"
-        app:layout_constraintEnd_toStartOf="@+id/imageView7"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageView7"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
     <TextView
         android:id="@+id/textView6"
@@ -234,6 +236,41 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/infoErr"
+        android:layout_width="192dp"
+        android:layout_height="13dp"
+        android:layout_marginBottom="532dp"
+        android:layout_marginTop="186dp"
+        android:text="@string/please_enter_all_information"
+        android:textAlignment="center"
+        android:textColor="#D56584"
+        android:textSize="12sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/passErr"
+        android:layout_width="210dp"
+        android:layout_height="16dp"
+        android:layout_marginBottom="250dp"
+        android:layout_marginTop="465dp"
+        android:text="@string/please_make_sure_passwords_match"
+        android:textAlignment="center"
+        android:textColor="#D56584"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
