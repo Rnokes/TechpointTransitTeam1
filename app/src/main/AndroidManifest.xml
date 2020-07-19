@@ -44,6 +44,9 @@
         <activity android:name=".AllRoutesScreen" />
         <activity android:name=".SignUp" />
         <activity android:name=".RegComp" />
+        <activity android:name=".MyAlertsScreen" />
+        <activity android:name=".RouteScreen" />
+        <activity android:name=".AlertDetailsScreen" />
 
         <meta-data
             android:name="com.google.android.actions"
