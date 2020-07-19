@@ -50,7 +50,7 @@ public class ReportScreen extends Activity {
                 Spinner spinIssue = findViewById(R.id.issueSpinner);
                 String issueSelect = spinIssue.getSelectedItem().toString();
 
-                EditText descEntry =  findViewById(R.id.typeIssueHere);
+                EditText descEntry = findViewById(R.id.typeIssueHere);
                 String desc = descEntry.getText().toString();
 
                 System.out.println("Issue Selected: " + issueSelect);
@@ -86,7 +86,11 @@ public class ReportScreen extends Activity {
                                 @Override
                                 public void run() {
                                     findViewById(R.id.typeIssueHere).setVisibility(View.INVISIBLE);
+                                    findViewById(R.id.reportButton).setVisibility(View.INVISIBLE);
+                                    findViewById(R.id.issueSpinner).setVisibility(View.INVISIBLE);
+                                    findViewById(R.id.routeSpinner).setVisibility(View.INVISIBLE);
                                     findViewById(R.id.reportSuccText).setVisibility(View.VISIBLE);
+                                    findViewById(R.id.returnButton).setVisibility(View.VISIBLE);
                                 }
                             });
                         }
@@ -100,16 +104,15 @@ public class ReportScreen extends Activity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+                Button returnButton = findViewById(R.id.returnButton);
+                returnButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent i = new Intent(ReportScreen.this, HomeScreen.class);
+                        startActivity(i);
+                    }
+                });
 
-                try {
-                    sleep(2800);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-
-                Intent i = new Intent(ReportScreen.this, HomeScreen.class);
-                startActivity(i);
             }
         });
 
