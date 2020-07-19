@@ -17,20 +17,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/reportButton"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:background="@color/colorBlue"
-        android:text="@string/report_text"
-        android:textColor="@color/colorText"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <EditText
         android:id="@+id/typeIssueHere"
         android:layout_width="360dp"
@@ -104,73 +90,32 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="360dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="376dp"
-        android:layout_marginBottom="315dp"
-        android:background="#FFFFFF"
-        android:contentDescription="@string/spinner_holder"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/blue_rectangle" />
-
-    <View
-        android:id="@+id/reportBackground"
-        android:layout_width="360dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="38dp"
-        android:layout_marginEnd="27dp"
-        android:background="#FFFFFF"
-        android:foreground="@drawable/blue_rectangle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/top_back4" />
-
-    <View
-        android:id="@+id/reportBackground"
-        android:layout_width="360dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="38dp"
-        android:layout_marginEnd="27dp"
-        android:background="#FFFFFF"
-        android:foreground="@drawable/blue_rectangle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/top_back4" />
-
     <Spinner
         android:id="@+id/issueSpinner"
         android:layout_width="360dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="5dp"
         android:background="@color/bus_icon_background"
         android:entries="@array/problemTypes"
         android:foreground="@drawable/blue_rectangle"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reportIssue" />
+        app:layout_constraintTop_toBottomOf="@+id/routeSpinner" />
 
     <Spinner
         android:id="@+id/routeSpinner"
-        android:layout_width="350dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="381dp"
-        android:layout_marginBottom="319dp"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/bus_icon_background"
         android:entries="@array/route_names"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView10"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageView10"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:foreground="@drawable/blue_rectangle"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reportIssue" />
 
     <TextView
         android:id="@+id/textView7"
@@ -215,61 +160,86 @@
     <TextView
         android:id="@+id/reportTitle"
         android:layout_width="347dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="12dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@color/bus_icon_background"
+        android:foreground="@drawable/blue_rectangle"
+        android:padding="5dp"
         android:text="@string/report_an_issue"
         android:textAlignment="center"
         android:textColor="@color/colorBlue"
         android:textSize="36sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/reportBackground"
-        app:layout_constraintHorizontal_bias="0.183"
-        app:layout_constraintStart_toStartOf="@+id/reportBackground"
-        app:layout_constraintTop_toTopOf="@+id/reportBackground" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_back4" />
 
     <TextView
         android:id="@+id/customerService"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:text="@string/customer_service"
         android:textAlignment="center"
         android:textColor="#2D2D2D"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reportBackground" />
+        app:layout_constraintTop_toBottomOf="@+id/reportTitle" />
 
     <TextView
         android:id="@+id/reportIssue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp"
         android:text="@string/report_issue"
         android:textAlignment="center"
         android:textColor="@color/colorText"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/issueSpinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/customerService" />
 
+    <Button
+        android:id="@+id/reportButton"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:background="@color/colorBlue"
+        android:text="@string/report_text"
+        android:textColor="@color/colorText"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:id="@+id/reportSuccText"
-        android:layout_width="338dp"
-        android:layout_height="127dp"
-        android:layout_marginTop="508dp"
-        android:layout_marginBottom="96dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="@string/report_succ"
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/typeIssueHere"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/typeIssueHere"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/typeIssueHere"
+        app:layout_constraintEnd_toEndOf="@+id/typeIssueHere"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="@+id/typeIssueHere"
+        app:layout_constraintTop_toBottomOf="@+id/reportIssue" />
+
+    <Button
+        android:id="@+id/returnButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/colorBlue"
+        android:text="@string/main_menu_desc"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/reportButton"
+        app:layout_constraintEnd_toEndOf="@+id/reportButton"
+        app:layout_constraintStart_toStartOf="@+id/reportButton"
+        app:layout_constraintTop_toTopOf="@+id/reportButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
