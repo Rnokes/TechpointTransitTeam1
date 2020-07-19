@@ -60,6 +60,16 @@ public class HomeScreen extends Activity {
             }
         });
 
+        Button my_alert = findViewById(R.id.my_alert_button);
+        my_alert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(HomeScreen.this, MyAlertsScreen.class);
+                startActivity(i);
+            }
+        });
+
+
         Button purchase = findViewById(R.id.buy_pass_button);
         purchase.setOnClickListener(new View.OnClickListener() {
             @Override
