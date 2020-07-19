@@ -60,8 +60,8 @@ public class HomeScreen extends Activity {
             }
         });
 
-        Button my_alert = findViewById(R.id.my_alert_button);
-        my_alert.setOnClickListener(new View.OnClickListener() {
+        Button myAlertButton = findViewById(R.id.my_alert_button);
+        myAlertButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(HomeScreen.this, MyAlertsScreen.class);
