@@ -188,8 +188,8 @@ public class PaymentScreen extends Activity {
          * Note: see https://developer.paypal.com/docs/integration/direct/identity/attributes/ for mapping between the
          * attributes you select for this app in the PayPal developer portal and the scopes required here.
          */
-        Set<String> scopes = new HashSet<String>(
-                Arrays.asList(PayPalOAuthScopes.PAYPAL_SCOPE_EMAIL, PayPalOAuthScopes.PAYPAL_SCOPE_ADDRESS) );
+        Set<String> scopes = new HashSet<>(
+                Arrays.asList(PayPalOAuthScopes.PAYPAL_SCOPE_EMAIL, PayPalOAuthScopes.PAYPAL_SCOPE_ADDRESS));
         return new PayPalOAuthScopes(scopes);
     }
 
@@ -274,6 +274,7 @@ public class PaymentScreen extends Activity {
         // DB call to store byteArray
 
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        assert bitmap != null;
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, bos);
         byte[] bArray = bos.toByteArray();
 

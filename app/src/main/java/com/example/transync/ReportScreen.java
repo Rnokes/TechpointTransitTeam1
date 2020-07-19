@@ -39,8 +39,8 @@ public class ReportScreen extends Activity {
             }
         });
 
-        Button reportButton = findViewById(R.id.report_button);
-        passScreen.setOnClickListener(new View.OnClickListener() {
+        Button reportButton = findViewById(R.id.reportButton);
+        reportButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -48,11 +48,12 @@ public class ReportScreen extends Activity {
                 String routeSelect = spinRoute.getSelectedItem().toString();
 
                 Spinner spinIssue = findViewById(R.id.issueSpinner);
-                String issueSelect = spinRoute.getSelectedItem().toString();
+                String issueSelect = spinIssue.getSelectedItem().toString();
 
                 EditText descEntry =  findViewById(R.id.typeIssueHere);
                 String desc = descEntry.getText().toString();
 
+                System.out.println("Issue Selected: " + issueSelect);
                 int issueId = -1;
 
                 switch (issueSelect) {
@@ -77,16 +78,35 @@ public class ReportScreen extends Activity {
                 // DB call with issueId, routeSelect, and desc
 
 
-                System.out.print("Issue Reported");
+                Thread display = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        synchronized (this) {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    findViewById(R.id.typeIssueHere).setVisibility(View.INVISIBLE);
+                                    findViewById(R.id.reportSuccText).setVisibility(View.VISIBLE);
+                                }
+                            });
+                        }
+                    }
+                });
 
-                findViewById(R.id.typeIssueHere).setVisibility(View.INVISIBLE);
-                findViewById(R.id.reportSuccText).setVisibility(View.VISIBLE);
+                display.start();
+
+                try {
+                    display.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
                 try {
                     sleep(2800);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+
 
                 Intent i = new Intent(ReportScreen.this, HomeScreen.class);
                 startActivity(i);
