@@ -47,6 +47,7 @@
         <activity android:name=".MyAlertsScreen" />
         <activity android:name=".RouteScreen" />
         <activity android:name=".AlertDetailsScreen" />
+        <activity android:name=".ForgotPasswordScreen"/>
 
         <meta-data
             android:name="com.google.android.actions"
