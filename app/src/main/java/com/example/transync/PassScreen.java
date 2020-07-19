@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 
 public class PassScreen extends Activity {
 
@@ -21,6 +22,15 @@ public class PassScreen extends Activity {
                 startActivity(i);
             }
         });
+
+        Spinner passSpin = findViewById(R.id.passSpinner);
+
+        // DB call to get an array of values that go into passSpin
+
+        // Set array
+
+        // Do checks to see if pass is available, if not display data, of so display first option
+        // and then add an onClick listener for changing the codes if they pick a new pass
 
 
     }

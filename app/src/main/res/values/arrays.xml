@@ -6,4 +6,12 @@
         <item>"Bus Cancelled"</item>
         <item>"Other"</item>
     </array>
+
+    <array name= "route_names">
+        <item>"Route 1"</item>
+        <item>"Route 2"</item>
+        <item>"Route 3"</item>
+        <item>"Route 4"</item>
+        <item>"Route 5"</item>
+    </array>
 </resources>

@@ -72,4 +72,5 @@
     <string name="please_enter_all_information">Please Enter All Information</string>
     <string name="today">Today</string>
     <string name="yesterday">Yesterday</string>
+    <string name="report_succ">Thank you! Your issue has been recorded and is being verified. Returning to main menu in three seconds.</string>
 </resources>
