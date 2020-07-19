@@ -75,4 +75,8 @@
     <string name="report_succ">Thank you! Your issue has been recorded and is being verified. Returning to main menu in three seconds.</string>
     <string name="route_alerts">Route Alerts</string>
     <string name="add_my_routes">Add to \"My Routes\"</string>
+    <string name="time_label">Time:</string>
+    <string name="date_label">Date:</string>
+    <string name="bus_number_label">Bus #:</string>
+    <string name="route_label">Route:</string>
 </resources>
