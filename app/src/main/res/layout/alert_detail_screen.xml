@@ -1,6 +1,242 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/routeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:text="@string/route_label"
+        android:textAlignment="viewStart"
+        android:textColor="@android:color/black"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/routeName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/routeName" />
+
+    <View
+        android:id="@+id/top_back8"
+        android:layout_width="417dp"
+        android:layout_height="153dp"
+        android:layout_marginBottom="578dp"
+        android:background="@drawable/grey_rectangle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="109dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="118dp"
+        android:layout_marginEnd="277dp"
+        android:layout_marginBottom="597dp"
+        android:text="@string/main_menu_desc"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="109dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="270dp"
+        android:layout_marginTop="118dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="597dp"
+        android:text="@string/bus_pull_desc"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SmallSp" />
+
+    <ImageButton
+        android:id="@+id/passButton7"
+        android:layout_width="82dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="293dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="613dp"
+        android:background="#3A3B3E"
+        android:contentDescription="@string/bus_pull_desc"
+        android:src="@drawable/buspull"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/menubutton7"
+        android:layout_width="87dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="293dp"
+        android:layout_marginBottom="613dp"
+        android:contentDescription="@string/main_menu_desc"
+        android:src="@drawable/menu_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/newbus8"
+        android:layout_width="68dp"
+        android:layout_height="96dp"
+        android:layout_marginStart="171dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="172dp"
+        android:layout_marginBottom="550dp"
+        android:contentDescription="@string/bus_icon_desc"
+        android:src="@drawable/newbus"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/alertNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="todo:Alert#"
+        android:textColor="@color/colorOrange"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_back8" />
+
+    <TextView
+        android:id="@+id/timeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:text="@string/time_label"
+        android:textAlignment="viewStart"
+        android:textColor="@android:color/black"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/dateField"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/timeField" />
+
+    <TextView
+        android:id="@+id/timeField"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/blue_rectangle"
+        android:padding="10dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/dateField"
+        app:layout_constraintEnd_toEndOf="@+id/alertDescription" />
+
+    <TextView
+        android:id="@+id/dateLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:text="@string/date_label"
+        android:textAlignment="viewStart"
+        android:textColor="@android:color/black"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/dateField"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/dateField" />
+
+    <TextView
+        android:id="@+id/dateField"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/blue_rectangle"
+        android:padding="10dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/busNumberField"
+        app:layout_constraintEnd_toEndOf="@+id/alertDescription" />
+
+    <TextView
+        android:id="@+id/busNumberLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:text="@string/bus_number_label"
+        android:textAlignment="viewStart"
+        android:textColor="@android:color/black"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/busNumberField"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/busNumberField" />
+
+    <TextView
+        android:id="@+id/busNumberField"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/blue_rectangle"
+        android:padding="10dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/routeName"
+        app:layout_constraintEnd_toEndOf="@+id/alertDescription" />
+
+    <TextView
+        android:id="@+id/routeName"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/blue_rectangle"
+        android:padding="10dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/alertDescription"
+        app:layout_constraintEnd_toEndOf="@+id/alertDescription" />
+
+    <TextView
+        android:id="@+id/alertDescription"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/blue_rectangle"
+        android:padding="10dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
