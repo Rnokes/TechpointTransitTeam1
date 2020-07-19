@@ -132,6 +132,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/top_back4" />
 
+    <View
+        android:id="@+id/reportBackground"
+        android:layout_width="360dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="27dp"
+        android:background="#FFFFFF"
+        android:foreground="@drawable/blue_rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_back4" />
+
     <Spinner
         android:id="@+id/issueSpinner"
         android:layout_width="360dp"
