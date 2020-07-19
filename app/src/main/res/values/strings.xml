@@ -73,4 +73,6 @@
     <string name="today">Today</string>
     <string name="yesterday">Yesterday</string>
     <string name="report_succ">Thank you! Your issue has been recorded and is being verified. Returning to main menu in three seconds.</string>
+    <string name="route_alerts">Route Alerts</string>
+    <string name="add_my_routes">Add to \"My Routes\"</string>
 </resources>
