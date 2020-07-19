@@ -62,7 +62,7 @@
     <string name="spinner_holder">spinner_holder</string>
     <string name="countholder">countHolder</string>
     <string name="qrcode">QRCode</string>
-    <string name="select_an_active_pass">Select an Active Pass:</string>
+    <string name="select_an_active_pass">Currently Active Pass:</string>
     <string name="regEmail">Email</string>
     <string name="reg_phone_number">Phone Number</string>
     <string name="reg_last_name">Last Name</string>
@@ -73,4 +73,5 @@
     <string name="today">Today</string>
     <string name="yesterday">Yesterday</string>
     <string name="report_succ">Thank you! Your issue has been recorded and is being verified. Returning to main menu in three seconds.</string>
+    <string name="no_pass_notif">You do not currently have a pass, please buy one first.</string>
 </resources>
