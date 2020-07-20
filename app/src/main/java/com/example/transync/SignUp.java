@@ -55,7 +55,7 @@ public class SignUp extends Activity {
                 else {  // Set calls to db and enter RegComp Screen
                     try {
                         stmt.executeUpdate("INSERT INTO users (firstname, lastname, email, passhash, phone, sms)" +
-                                "VALUES('" + firstName + "','" + lastName + "','" + email + "', crypt('" + passStart + "', gen_salt('bf'),'" + phone + "','yes')");
+                                "VALUES('" + firstName + "','" + lastName + "','" + email + "', crypt('" + passStart + "', gen_salt('bf')),'" + phone + "','yes')");
                     } catch (SQLException e) {
                         System.out.println("Insertion failed.");
                         e.printStackTrace();
