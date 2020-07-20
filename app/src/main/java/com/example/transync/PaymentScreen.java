@@ -9,6 +9,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Point;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +26,7 @@ import org.json.JSONException;
 
 import java.io.ByteArrayOutputStream;
 import java.math.BigDecimal;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -33,6 +36,7 @@ import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
 
 import static com.example.transync.PurchaseScreen.busTypePurchased;
+import static com.example.transync.SignIn.connection;
 import static com.example.transync.SignIn.stmt;
 import static com.example.transync.SignIn.userid;
 
@@ -263,24 +267,29 @@ public class PaymentScreen extends Activity {
         int smallerDimension = width < height ? width : height;
         smallerDimension = smallerDimension * 3 / 4;
 
-        qrgEncoder = new QRGEncoder("Testy boi", null, QRGContents.Type.TEXT, smallerDimension);
+        String qrData = "Valid Pass : " + userid;
+
+        qrgEncoder = new QRGEncoder(qrData, null, QRGContents.Type.TEXT, smallerDimension);
         try {
             bitmap = qrgEncoder.encodeAsBitmap();
-
         } catch (WriterException e) {
             Log.v(TAG, e.toString());
         }
 
-        // DB call to store byteArray
 
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         assert bitmap != null;
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, bos);
         byte[] bArray = bos.toByteArray();
 
-        ContentValues values = new ContentValues();
-        values.put("image", bArray);
+
         // DB Call Here
+        try {
+            stmt.executeUpdate("UPDATE users set qrcode='" + Arrays.toString(bArray) + "' where userid=" + userid);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void paymentSucceedToDB() throws SQLException {
