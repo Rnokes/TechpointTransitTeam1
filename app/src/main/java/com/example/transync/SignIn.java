@@ -149,7 +149,7 @@ public class SignIn extends Activity {
 
         // First call to db to verify id
         try {
-            rs = dbCall("SELECT CASE WHEN email like '" + email + "' AND password like '" + pass + "' THEN 1 ELSE 0 END FROM users");
+            rs = dbCall("SELECT CASE WHEN email like '" + email +"' AND(passhash = crypt('"+ pass +"', passhash))= 'true' THEN 1 ELSE 0 END FROM users");
             while (rs.next()) {
                 out = rs.getInt(1);
                 if (out == 1) {
@@ -163,7 +163,7 @@ public class SignIn extends Activity {
         if (out == 1) {
             // Call the db again and request the userid of the user/pass combo
             try {
-                rs = dbCall("SELECT userid FROM users WHERE email like '" + email + "' AND password like '" + pass + "'");
+                rs = dbCall("SELECT userid FROM users WHERE email like '" + email + "' AND (passhash = crypt('"+ pass +"', passhash))= 'true'");
                 while (rs.next()) {
                     userid = rs.getInt(1);
                 }
