@@ -9,6 +9,12 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
+/*
+ *  Class that handles the manual reporting of issues with bus routes.
+ *  Allows users to input the type of issue, the route of the associated issue,
+ *  and a brief description of the issue. Then reports the issue to the database.
+ */
+
 public class ReportScreen extends Activity {
 
     @Override
@@ -16,9 +22,14 @@ public class ReportScreen extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.report_screen);
 
+        /* Sets the visibility of error/succeed messages on creation */
         findViewById(R.id.typeIssueHere).setVisibility(View.VISIBLE);
         findViewById(R.id.reportSuccText).setVisibility(View.INVISIBLE);
 
+        /*
+         *  The click listener for the menu button, sets that the
+         *  button should return to main menu upon press.
+         */
         ImageButton menu = findViewById(R.id.menubutton);
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,6 +39,10 @@ public class ReportScreen extends Activity {
             }
         });
 
+        /*
+         *  The click listener for the pass button, sets that the
+         *  button should go to the pass screen upon press.
+         */
         ImageButton passScreen = findViewById(R.id.passButton);
         passScreen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,13 +50,21 @@ public class ReportScreen extends Activity {
                 Intent i = new Intent(ReportScreen.this, PassScreen.class);
                 startActivity(i);
             }
-        });
+        }); /* setOnclickListener */
 
+        /*
+         *  The click listener for the report button, pulls the information from each of
+         *  the input options, makes sure that an issue is selected, and sends all of the
+         *  information to the database to be stored and then displayed in the results
+         *  screen. Upon a successful report, it hides all of the input boxes, and reports
+         *  the result of the database call, whether it succeeded or failed.
+         */
         Button reportButton = findViewById(R.id.reportButton);
         reportButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                /* Following three declarations pull information from the screen's input */
                 Spinner spinRoute = findViewById(R.id.routeSpinner);
                 String routeSelect = spinRoute.getSelectedItem().toString();
 
@@ -51,6 +74,7 @@ public class ReportScreen extends Activity {
                 EditText descEntry = findViewById(R.id.typeIssueHere);
                 String desc = descEntry.getText().toString();
 
+                /* Following switch statement, selects the issue id of the report */
                 System.out.println("Issue Selected: " + issueSelect);
                 int issueId = -1;
 
@@ -73,10 +97,17 @@ public class ReportScreen extends Activity {
                         startActivity(i);
                 }
 
-                //TODO: DB call with issueId, routeSelect, and desc
-                //TODO: Replace the route name array with the actual route names
+                /*
+                 * TODO:
+                 *  Need a database call that uses creates a new issue, with the type of issue
+                 *  using the issue id(issueID variable), the route name (routeSelect variable),
+                 *  and the description of the issue (desc variable).
+                 */
+
+                /* TODO: Replace the route name array with the actual route names from the database, and possible search feature */
 
 
+                /* Sets the visibility of the input boxes and then displays the db call result */
                 Thread display = new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -94,8 +125,7 @@ public class ReportScreen extends Activity {
                             });
                         }
                     }
-                });
-
+                }); /* Thread Runnable() */
                 display.start();
 
                 try {
@@ -103,6 +133,11 @@ public class ReportScreen extends Activity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+
+                /*
+                 *  The click listener for another menu button, sets that the
+                 *  button should return to the main menu upon press.
+                 */
                 Button returnButton = findViewById(R.id.returnButton);
                 returnButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -110,10 +145,10 @@ public class ReportScreen extends Activity {
                         Intent i = new Intent(ReportScreen.this, HomeScreen.class);
                         startActivity(i);
                     }
-                });
+                }); /* setOnclickListener */
 
             }
-        });
+        }); /* setOnclickListener */
 
     }
 }
