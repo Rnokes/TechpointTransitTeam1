@@ -16,6 +16,7 @@ import android.widget.TextView;
 import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import static com.example.transync.SignIn.stmt;
 import static com.example.transync.SignIn.userid;
@@ -90,13 +91,27 @@ public class PassScreen extends Activity {
     private void displayQRCode() throws SQLException {
 
         ResultSet rs = stmt.executeQuery("select qrcode from users where userid=" + userid);
-        Array data = rs.getArray(1);
+        rs.next();
+        byte[] bArray = rs.getBytes(1);
 
-        assert data != null;
-        byte[] bArray = (byte[]) data.getArray();
+        /*
+        ArrayList<Byte> byteArr = new ArrayList<Byte>();
+        while (rs.next()) {
+            byteArr.add(rs.getByte(1));
+        }
+
+
+        byte[] bArray = new byte[byteArr.size()];
+        for (int x = 0; x < byteArr.size(); x++) {
+            bArray[x] = byteArr.get(x);
+        }
+        */
+
+        System.out.println("Size: " + bArray.length);
 
         Bitmap bitmap = BitmapFactory.decodeByteArray(bArray, 0, bArray.length);
-        ImageView qrCode = (ImageView) findViewById(R.id.qrCode);
+        ImageView qrCode = findViewById(R.id.qrCode);
         qrCode.setImageBitmap(bitmap);
+
     }
 }
