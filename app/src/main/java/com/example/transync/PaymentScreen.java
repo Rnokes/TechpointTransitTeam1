@@ -1,15 +1,10 @@
 package com.example.transync;
 
-import com.google.zxing.WriterException;
-import com.paypal.android.sdk.payments.*;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Point;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,15 +13,21 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.zxing.WriterException;
+import com.paypal.android.sdk.payments.PayPalConfiguration;
+import com.paypal.android.sdk.payments.PayPalOAuthScopes;
+import com.paypal.android.sdk.payments.PayPalPayment;
+import com.paypal.android.sdk.payments.PayPalService;
+import com.paypal.android.sdk.payments.PaymentActivity;
+import com.paypal.android.sdk.payments.PaymentConfirmation;
 
 import org.json.JSONException;
 
 import java.io.ByteArrayOutputStream;
 import java.math.BigDecimal;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -36,7 +37,6 @@ import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
 
 import static com.example.transync.PurchaseScreen.busTypePurchased;
-import static com.example.transync.SignIn.connection;
 import static com.example.transync.SignIn.stmt;
 import static com.example.transync.SignIn.userid;
 
@@ -46,10 +46,10 @@ public class PaymentScreen extends Activity {
 
     /**
      * - Set to PayPalConfiguration.ENVIRONMENT_PRODUCTION to move real money.
-     *
+     * <p>
      * - Set to PayPalConfiguration.ENVIRONMENT_SANDBOX to use your test credentials
      * from https://developer.paypal.com
-     *
+     * <p>
      * - Set to PayPalConfiguration.ENVIRONMENT_NO_NETWORK to kick the tires
      * without communicating to PayPal's servers.
      */
@@ -106,7 +106,7 @@ public class PaymentScreen extends Activity {
         String timeLength = "";
         String type = "";
 
-        switch(busTypePurchased) {
+        switch (busTypePurchased) {
             case 1:
                 // Daily
                 price = 5.00;
@@ -136,7 +136,7 @@ public class PaymentScreen extends Activity {
         TextView indyGo = findViewById(R.id.indygo_desc);
         Button pay = findViewById(R.id.purchase_button);
 
-        priceText.setText("Price: $" + price +"0");
+        priceText.setText("Price: $" + price + "0");
         passType.setText(type);
         indyGo.setText("This pass we will be valid for " + timeLength + " in the IndyGo bus system upon purchase.");
 
@@ -165,7 +165,7 @@ public class PaymentScreen extends Activity {
     }
 
     private PayPalPayment getPassToBuy(String paymentIntent) {
-        switch(busTypePurchased) {
+        switch (busTypePurchased) {
             case 1:
                 // Daily
                 return new PayPalPayment(new BigDecimal("5.00"), "USD", "Daily Pass", paymentIntent);
@@ -199,7 +199,7 @@ public class PaymentScreen extends Activity {
 
     @SuppressLint("SetTextI18n")
     protected void displayResultText(String result) {
-        ((TextView)findViewById(R.id.resultText)).setText("Result : " + result);
+        ((TextView) findViewById(R.id.resultText)).setText("Result : " + result);
         Toast.makeText(
                 getApplicationContext(),
                 result, Toast.LENGTH_LONG)
@@ -296,26 +296,26 @@ public class PaymentScreen extends Activity {
 
         // Create throw to database
         // Need to send that the user has bought pass
-        switch(busTypePurchased) {
+        switch (busTypePurchased) {
             case 1:
                 // Daily
                 stmt.executeUpdate("UPDATE users " +
                         "SET buspassid_fk='2', expirationdate= current_timestamp + interval '24 hours' " +
-                        "WHERE userid=" +  userid );
+                        "WHERE userid=" + userid);
                 break;
 
             case 2:
                 // Weekly
                 stmt.executeUpdate("UPDATE users " +
                         "SET buspassid_fk='3', expirationdate= current_timestamp + interval '7 days' " +
-                        "WHERE userid=" +  userid );
+                        "WHERE userid=" + userid);
                 break;
 
             case 3:
                 // Monthly
                 stmt.executeUpdate("UPDATE users " +
                         "SET buspassid_fk='4', expirationdate= current_timestamp + interval '31 days' " +
-                        "WHERE userid=" +  userid );
+                        "WHERE userid=" + userid);
                 break;
 
             default:

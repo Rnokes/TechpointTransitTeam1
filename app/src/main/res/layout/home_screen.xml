@@ -15,15 +15,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <Button
         android:id="@+id/my_alert_button"
         android:layout_width="145dp"
         android:layout_height="54dp"
+        android:layout_marginBottom="373dp"
+        android:layout_marginEnd="47dp"
         android:layout_marginStart="219dp"
         android:layout_marginTop="304dp"
-        android:layout_marginEnd="47dp"
-        android:layout_marginBottom="373dp"
         android:background="#C2EA79"
         android:text="@string/my_alerts"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -31,14 +30,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <Button
         android:id="@+id/my_pass_button"
         android:layout_width="140dp"
         android:layout_height="52dp"
+        android:layout_marginBottom="373dp"
+        android:layout_marginEnd="228dp"
         android:layout_marginStart="43dp"
         android:layout_marginTop="306dp"
-        android:layout_marginEnd="228dp"
-        android:layout_marginBottom="373dp"
         android:background="#47978B"
         android:text="@string/my_bus_passes"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -50,10 +50,10 @@
         android:id="@+id/buy_pass_button"
         android:layout_width="142dp"
         android:layout_height="53dp"
+        android:layout_marginBottom="270dp"
+        android:layout_marginEnd="228dp"
         android:layout_marginStart="41dp"
         android:layout_marginTop="408dp"
-        android:layout_marginEnd="228dp"
-        android:layout_marginBottom="270dp"
         android:background="#47978B"
         android:text="@string/buy_a_pass"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -61,15 +61,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <Button
         android:id="@+id/my_routes_button"
         android:layout_width="146dp"
         android:layout_height="53dp"
+        android:layout_marginBottom="168dp"
+        android:layout_marginEnd="47dp"
         android:layout_marginStart="218dp"
         android:layout_marginTop="510dp"
-        android:layout_marginEnd="47dp"
-        android:layout_marginBottom="168dp"
         android:background="#e26944"
         android:text="@string/my_routes"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -77,14 +76,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <Button
         android:id="@+id/all_routes_button"
         android:layout_width="143dp"
         android:layout_height="55dp"
+        android:layout_marginBottom="166dp"
+        android:layout_marginEnd="228dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="510dp"
-        android:layout_marginEnd="228dp"
-        android:layout_marginBottom="166dp"
         android:background="#e26944"
         android:text="@string/all_routes"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -96,10 +96,10 @@
         android:id="@+id/report_button"
         android:layout_width="146dp"
         android:layout_height="54dp"
+        android:layout_marginBottom="269dp"
+        android:layout_marginEnd="46dp"
         android:layout_marginStart="219dp"
         android:layout_marginTop="408dp"
-        android:layout_marginEnd="46dp"
-        android:layout_marginBottom="269dp"
         android:background="#C2EA79"
         android:text="@string/report_an_issue"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -111,10 +111,10 @@
         android:id="@+id/route_map_button"
         android:layout_width="143dp"
         android:layout_height="55dp"
+        android:layout_marginBottom="64dp"
+        android:layout_marginEnd="134dp"
         android:layout_marginStart="134dp"
         android:layout_marginTop="612dp"
-        android:layout_marginEnd="134dp"
-        android:layout_marginBottom="64dp"
         android:background="#e26944"
         android:text="@string/route_map"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -122,15 +122,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <ImageButton
         android:id="@+id/passButton"
         android:layout_width="82dp"
         android:layout_height="68dp"
+        android:layout_marginBottom="613dp"
+        android:layout_marginEnd="28dp"
         android:layout_marginStart="301dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="613dp"
         android:background="#3A3B3E"
         android:contentDescription="@string/bus_pull_desc"
         android:src="@drawable/buspull"
@@ -140,6 +139,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+
 
     <ImageView
         android:id="@+id/newbus"
@@ -158,10 +158,10 @@
         android:id="@+id/textView"
         android:layout_width="109dp"
         android:layout_height="16dp"
+        android:layout_marginBottom="597dp"
+        android:layout_marginEnd="14dp"
         android:layout_marginStart="288dp"
         android:layout_marginTop="118dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginBottom="597dp"
         android:text="@string/bus_pull_desc"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
@@ -177,8 +177,8 @@
         android:id="@+id/nameDisplay"
         android:layout_width="316dp"
         android:layout_height="46dp"
-        android:layout_marginTop="158dp"
         android:layout_marginBottom="527dp"
+        android:layout_marginTop="158dp"
         android:text="@string/err"
         android:textAlignment="center"
         android:textSize="30sp"
@@ -193,8 +193,8 @@
         android:id="@+id/texttimedisp"
         android:layout_width="246dp"
         android:layout_height="46dp"
-        android:layout_marginTop="235dp"
         android:layout_marginBottom="463dp"
+        android:layout_marginTop="235dp"
         android:text="@string/err"
         android:textAlignment="center"
         android:textSize="18sp"
@@ -208,8 +208,8 @@
         android:id="@+id/time_disp"
         android:layout_width="326dp"
         android:layout_height="42dp"
-        android:layout_marginTop="215dp"
         android:layout_marginBottom="460dp"
+        android:layout_marginTop="215dp"
         android:background="@drawable/blue_rectangle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

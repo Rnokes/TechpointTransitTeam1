@@ -3,23 +3,13 @@ package com.example.transync;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapRegionDecoder;
-import android.media.Image;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import static com.example.transync.SignIn.stmt;
 import static com.example.transync.SignIn.userid;
@@ -63,8 +53,7 @@ public class PassScreen extends Activity {
             TextView passDesc = findViewById(R.id.Active_Pass_Text);
             passDesc.setText("No Pass Available");
             findViewById(R.id.noPassNotif).setVisibility(View.VISIBLE);
-        }
-        else {
+        } else {
 
             String passType = "";
             try {
@@ -100,12 +89,11 @@ public class PassScreen extends Activity {
                 TextView num = findViewById(R.id.timeLeftCounter);
                 timestamp = timestamp.substring(0, timestamp.indexOf(" "));
                 num.setText(timestamp);
-            }
-            else {
+            } else {
                 TextView hours = findViewById(R.id.daysLeftCounter);
                 hours.setText("Hours Left");
                 TextView num = findViewById(R.id.timeLeftCounter);
-                timestamp = timestamp.substring(0, timestamp.indexOf(" "));
+                timestamp = timestamp.substring(0, timestamp.indexOf(":"));
                 num.setText(timestamp);
             }
 

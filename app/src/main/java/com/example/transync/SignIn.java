@@ -16,11 +16,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import static java.lang.Thread.sleep;
 
 
 public class SignIn extends Activity {
@@ -28,6 +25,64 @@ public class SignIn extends Activity {
     public static Connection connection;
     public static Statement stmt;
     public static int userid;
+
+    public static Connection getConnection() throws URISyntaxException, SQLException {
+        @SuppressLint("AuthLeak") URI dbUri = new URI("postgres://ungvogbyninyqk:48f83f1a0cd8ae57d6cc2bb7337b81bfd12915b1dd7fdd8f5d461f61bed7f915@ec2-52-202-146-43.compute-1.amazonaws.com:5432/dbk1f16g641cet");
+
+        String username = dbUri.getUserInfo().split(":")[0];
+        String password = dbUri.getUserInfo().split(":")[1];
+        String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
+
+        return DriverManager.getConnection(dbUrl, username, password);
+    }
+
+
+    /*
+     *  A function used for verifying the credentials used for a login.
+     *  Calls the database using the credentials given, and verifies that
+     *  they are valid. If they are not, it returns a false boolean and sets
+     *  an incorrect login text to appear on the login screen. If they are
+     *  correct, another database call is made requesting the userid of the
+     *  successful login, a global variable is set to the userid, and true is returned.
+     */
+
+    public static boolean login(String email, String pass) {
+
+        System.out.println("Login Call Using Creds: " + email + ", " + pass);
+
+        ResultSet rs;
+        int out = 0;
+
+        /* Initial verification call to db with given credentials */
+        try {
+            rs = stmt.executeQuery("SELECT CASE WHEN email like '" + email + "' AND(passhash = crypt('" + pass + "', passhash))= 'true' THEN 1 ELSE 0 END FROM users");
+            while (rs.next()) {
+                out = rs.getInt(1);
+                if (out == 1) {
+                    break;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        if (out == 1) {
+            /* Database is called again to get the userid associated with the correct user/pass */
+            try {
+                rs = stmt.executeQuery("SELECT userid FROM users WHERE email like '" + email + "' AND (passhash = crypt('" + pass + "', passhash))= 'true'");
+                while (rs.next()) {
+                    userid = rs.getInt(1);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            System.out.println("UserId: " + userid);
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 
     @SuppressLint("SimpleDateFormat")
@@ -61,14 +116,13 @@ public class SignIn extends Activity {
             }
         }).start();
 
-
         long initTime = System.currentTimeMillis();
         while (stmt == null) {
             if (System.currentTimeMillis() - initTime > 15000) {
-                    System.out.println("Db connection took too long.");
-                    findViewById(R.id.Internet_Failure).setVisibility(View.VISIBLE);
-                    Intent i = new Intent(SignIn.this, Splash.class);
-                    startActivity(i);
+                System.out.println("Db connection took too long.");
+                findViewById(R.id.Internet_Failure).setVisibility(View.VISIBLE);
+                Intent i = new Intent(SignIn.this, Splash.class);
+                startActivity(i);
             } else {
                 try {
                     Thread.sleep(500);
@@ -88,8 +142,7 @@ public class SignIn extends Activity {
                 System.out.println(trace);
             }
             System.exit(1);
-        }
-        else {
+        } else {
             System.out.println("Connection to db successful!");
         }
 
@@ -108,10 +161,10 @@ public class SignIn extends Activity {
             @Override
             public void onClick(View view) {
 
-                EditText user = (EditText) findViewById(R.id.editUserText);
+                EditText user = findViewById(R.id.editUserText);
                 final String email = user.getText().toString();
 
-                EditText pass = (EditText) findViewById(R.id.editSignInPass);
+                EditText pass = findViewById(R.id.editSignInPass);
                 final String password = pass.getText().toString();
 
                 boolean attempt = login(email, password);
@@ -119,8 +172,7 @@ public class SignIn extends Activity {
                 if (attempt) {
                     Intent i = new Intent(SignIn.this, HomeScreen.class);
                     startActivity(i);
-                }
-                else {
+                } else {
                     System.out.println("Incorrect login given");
                     findViewById(R.id.incorrectSignIn).setVisibility(View.VISIBLE);
                 }
@@ -137,59 +189,5 @@ public class SignIn extends Activity {
             }
         });
 
-    }
-
-
-    public static Connection getConnection() throws URISyntaxException, SQLException {
-        @SuppressLint("AuthLeak") URI dbUri = new URI("postgres://ungvogbyninyqk:48f83f1a0cd8ae57d6cc2bb7337b81bfd12915b1dd7fdd8f5d461f61bed7f915@ec2-52-202-146-43.compute-1.amazonaws.com:5432/dbk1f16g641cet");
-
-        String username = dbUri.getUserInfo().split(":")[0];
-        String password = dbUri.getUserInfo().split(":")[1];
-        String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
-
-        return DriverManager.getConnection(dbUrl, username, password);
-    }
-
-    public static boolean login(String email, String pass) {
-
-        System.out.println("Login Call Using Creds: " + email + ", " + pass);
-
-        ResultSet rs;
-        int out = 0;
-
-        // First call to db to verify id
-        try {
-            rs = dbCall("SELECT CASE WHEN email like '" + email +"' AND(passhash = crypt('"+ pass +"', passhash))= 'true' THEN 1 ELSE 0 END FROM users");
-            while (rs.next()) {
-                out = rs.getInt(1);
-                if (out == 1) {
-                    break;
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        if (out == 1) {
-            // Call the db again and request the userid of the user/pass combo
-            try {
-                rs = dbCall("SELECT userid FROM users WHERE email like '" + email + "' AND (passhash = crypt('"+ pass +"', passhash))= 'true'");
-                while (rs.next()) {
-                    userid = rs.getInt(1);
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
-            System.out.println("UserId: " + userid);
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
-    public static ResultSet dbCall(String query) throws SQLException {
-        return stmt.executeQuery(query);
     }
 }

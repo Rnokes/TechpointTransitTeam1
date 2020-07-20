@@ -9,16 +9,14 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import static com.example.transync.SignIn.dbCall;
+import static com.example.transync.SignIn.stmt;
 import static com.example.transync.SignIn.userid;
-import static java.lang.Thread.sleep;
 
 public class HomeScreen extends Activity {
 
@@ -30,7 +28,7 @@ public class HomeScreen extends Activity {
         String first = "";
         String last = "";
         try {
-            ResultSet rs = dbCall("SELECT firstname, lastname FROM users WHERE userid = \'" + userid + "\'");
+            ResultSet rs = stmt.executeQuery("SELECT firstname, lastname FROM users WHERE userid = '" + userid + "'");
             while (rs.next()) {
                 first = rs.getString(1);
                 last = rs.getString(2);

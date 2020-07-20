@@ -9,8 +9,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
-import static java.lang.Thread.sleep;
-
 public class ReportScreen extends Activity {
 
     @Override

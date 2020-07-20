@@ -26,33 +26,31 @@ public class SignUp extends Activity {
                 findViewById(R.id.infoErr).setVisibility(View.INVISIBLE);
                 findViewById(R.id.passErr).setVisibility(View.INVISIBLE);
 
-                EditText fname = (EditText) findViewById(R.id.firstNameEntry);
+                EditText fname = findViewById(R.id.firstNameEntry);
                 final String firstName = fname.getText().toString();
 
-                EditText lname = (EditText) findViewById(R.id.lastNameEntry);
+                EditText lname = findViewById(R.id.lastNameEntry);
                 final String lastName = lname.getText().toString();
 
-                EditText emailEnt = (EditText) findViewById(R.id.emailEntry);
+                EditText emailEnt = findViewById(R.id.emailEntry);
                 final String email = emailEnt.getText().toString();
 
-                EditText phoneEnt = (EditText) findViewById(R.id.editTextPhone);
+                EditText phoneEnt = findViewById(R.id.editTextPhone);
                 final String phone = phoneEnt.getText().toString();
 
-                EditText passS = (EditText) findViewById(R.id.passwordStart);
+                EditText passS = findViewById(R.id.passwordStart);
                 final String passStart = passS.getText().toString();
 
-                EditText passE = (EditText) findViewById(R.id.passwordConfirm);
+                EditText passE = findViewById(R.id.passwordConfirm);
                 final String passConfirm = passE.getText().toString();
 
                 if (Objects.equals(firstName, "") || Objects.equals(lastName, "") || Objects.equals(email, "") || Objects.equals(phone, "")) {
                     System.out.println("Reg info entered incorrectly.");
                     findViewById(R.id.infoErr).setVisibility(View.VISIBLE);
-                }
-                else if (!passStart.equals(passConfirm)) { // Passwords not matching
+                } else if (!passStart.equals(passConfirm)) { // Passwords not matching
                     System.out.println("Reg passwords do not match.");
                     findViewById(R.id.passErr).setVisibility(View.VISIBLE);
-                }
-                else {  // Set calls to db and enter RegComp Screen
+                } else {  // Set calls to db and enter RegComp Screen
                     try {
                         stmt.executeUpdate("INSERT INTO users (firstname, lastname, email, passhash, phone, sms)" +
                                 "VALUES('" + firstName + "','" + lastName + "','" + email + "', crypt('" + passStart + "', gen_salt('bf')),'" + phone + "','yes')");
