@@ -92,6 +92,14 @@ public class SignIn extends Activity {
             System.out.println("Connection to db successful!");
         }
 
+        Button forgotPassword = findViewById(R.id.info_forget);
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(SignIn.this, ForgotPasswordScreen.class);
+                startActivity(i);
+            }
+        });
 
         Button signIn = findViewById(R.id.signin_button);
         signIn.setOnClickListener(new View.OnClickListener() {
