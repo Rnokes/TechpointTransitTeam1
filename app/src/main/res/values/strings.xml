@@ -47,7 +47,7 @@
     <string name="create_a_password">Create a Password…</string>
     <string name="outline">outline</string>
     <string name="return_to_sign_in">Return to Sign In</string>
-    <string name="an_email_has_been_sent_to_the_address_you_provided_please_follow_the_directions_provided_in_the_email_to_confirm_your_registration_once_confirmed_please_return_to_the_login_page_to_proceed">An email has been sent to the address you provided. Please follow the directions provided in the email to confirm your registration. Once confirmed, please return to the login page to proceed.</string>
+    <string name="recovery_email_sent">An email has been sent to the address you provided. Please follow the directions provided in the email to confirm your registration. Once confirmed, please return to the login page to proceed.</string>
     <string name="check_your_email">Check Your Email!</string>
 
     <string name="report_an_issue">Report An Issue</string>
@@ -81,6 +81,12 @@
     <string name="bus_number_label">Bus #:</string>
     <string name="route_label">Route:</string>
     <string name="select_one">Select One:</string>
+
     <string name="recover_pass">Recover Password</string>
     <string name="return_login">Return to Log-in Page</string>
+    <string name="newAccount">Create a New Account</string>
+    <string name="unrecognized_text">Unrecognized email. \n Create a new account?</string>
+    <string name="check_email">Verify Email</string>
+    <string name="recognized_text">Account found! \n Press the button to recover your password.</string>
+    <string name="recovery_string">An email has been sent to the address of the account. Please follow the provided instructions to reset your password and return to the Log-in page in order to sign in to the app.</string>
 </resources>

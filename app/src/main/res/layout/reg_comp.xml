@@ -54,7 +54,7 @@
         android:layout_width="241dp"
         android:layout_height="108dp"
         android:layout_marginBottom="417dp"
-        android:text="@string/an_email_has_been_sent_to_the_address_you_provided_please_follow_the_directions_provided_in_the_email_to_confirm_your_registration_once_confirmed_please_return_to_the_login_page_to_proceed"
+        android:text="@string/recovery_email_sent"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageView8"

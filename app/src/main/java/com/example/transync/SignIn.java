@@ -101,6 +101,7 @@ public class SignIn extends Activity {
             }
         });
 
+
         Button signIn = findViewById(R.id.signin_button);
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
