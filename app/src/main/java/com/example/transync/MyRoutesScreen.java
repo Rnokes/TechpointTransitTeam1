@@ -31,5 +31,17 @@ public class MyRoutesScreen extends Activity {
                 startActivity(i);
             }
         });
+
+        Button mapButton = findViewById(R.id.routeMap);
+        mapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MyRoutesScreen.this, MapScreen.class);
+                startActivity(i);
+            }
+        });
+
+
+        //TODO: Get DB call to the get routes related to userid
     }
 }

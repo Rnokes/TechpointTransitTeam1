@@ -22,5 +22,14 @@ public class AlertDetailsScreen extends Activity {
                 startActivity(i);
             }
         });
+
+        ImageButton passButton = findViewById(R.id.passButton7);
+        passButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(AlertDetailsScreen.this, PassScreen.class);
+                startActivity(i);
+            }
+        });
     }
 }

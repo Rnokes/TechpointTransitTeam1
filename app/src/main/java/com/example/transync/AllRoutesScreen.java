@@ -22,5 +22,26 @@ public class AllRoutesScreen extends Activity {
                 startActivity(i);
             }
         });
+
+        ImageButton passButton = findViewById(R.id.passButton);
+        passButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(AllRoutesScreen.this, PassScreen.class);
+                startActivity(i);
+            }
+        });
+
+        Button mapButton = findViewById(R.id.routeMap);
+        mapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(AllRoutesScreen.this, MapScreen.class);
+                startActivity(i);
+            }
+        });
+
+        // TODO: Get DB call to get names of all routes, and add them to the scroll list
+
     }
 }

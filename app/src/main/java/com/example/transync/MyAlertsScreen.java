@@ -20,5 +20,18 @@ public class MyAlertsScreen extends Activity {
                 startActivity(i);
             }
         });
+
+        ImageButton passButton = findViewById(R.id.passButton6);
+        passButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MyAlertsScreen.this, PassScreen.class);
+                startActivity(i);
+            }
+        });
+
+
+        //TODO: DB call to get all routes related to the userid and correct days
+
     }
 }

@@ -75,7 +75,8 @@ public class ReportScreen extends Activity {
                         startActivity(i);
                 }
 
-                // DB call with issueId, routeSelect, and desc
+                //TODO: DB call with issueId, routeSelect, and desc
+                //TODO: Replace the route name array with the actual route names
 
 
                 Thread display = new Thread(new Runnable() {
