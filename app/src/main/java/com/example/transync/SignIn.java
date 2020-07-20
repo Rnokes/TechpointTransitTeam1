@@ -30,6 +30,7 @@ public class SignIn extends Activity {
     public static int userid;
 
 
+    @SuppressLint("SimpleDateFormat")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
