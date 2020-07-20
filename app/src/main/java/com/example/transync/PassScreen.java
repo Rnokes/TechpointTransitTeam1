@@ -5,9 +5,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.BitmapRegionDecoder;
 import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -30,6 +33,7 @@ public class PassScreen extends Activity {
         setContentView(R.layout.pass_screen);
 
         findViewById(R.id.noPassNotif).setVisibility(View.INVISIBLE);
+        findViewById(R.id.qrCode).setVisibility(View.INVISIBLE);
 
 
         ImageButton menu = findViewById(R.id.menubutton3);
@@ -75,15 +79,36 @@ public class PassScreen extends Activity {
             TextView passDesc = findViewById(R.id.Active_Pass_Text);
             passDesc.setText(passType);
 
-            // TODO: Implement Time Left on PassScreen
-            // Use: "SELECT (expirationdate-current_timestamp) as timeremaining from users where userid=" + userid
+            findViewById(R.id.qrCode).setVisibility(View.VISIBLE);
 
+            ResultSet rs = null;
+            String timestamp = "";
 
             try {
-                displayQRCode();
+                rs = stmt.executeQuery("SELECT (expirationdate-current_timestamp) as timeremaining from users where userid=" + userid);
+                rs.next();
+                timestamp = rs.getString(1);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+
+            System.out.println("Time Left Stamp: " + timestamp);
+
+            if (timestamp.toLowerCase().contains("days")) {
+                TextView days = findViewById(R.id.daysLeftCounter);
+                days.setText("Days Left");
+                TextView num = findViewById(R.id.timeLeftCounter);
+                timestamp = timestamp.substring(0, timestamp.indexOf(" "));
+                num.setText(timestamp);
+            }
+            else {
+                TextView hours = findViewById(R.id.daysLeftCounter);
+                hours.setText("Hours Left");
+                TextView num = findViewById(R.id.timeLeftCounter);
+                timestamp = timestamp.substring(0, timestamp.indexOf(" "));
+                num.setText(timestamp);
+            }
+
         }
 
     }
@@ -94,24 +119,47 @@ public class PassScreen extends Activity {
         rs.next();
         byte[] bArray = rs.getBytes(1);
 
+        findViewById(R.id.qrCode).setVisibility(View.VISIBLE);
+
         /*
-        ArrayList<Byte> byteArr = new ArrayList<Byte>();
-        while (rs.next()) {
-            byteArr.add(rs.getByte(1));
-        }
-
-
-        byte[] bArray = new byte[byteArr.size()];
-        for (int x = 0; x < byteArr.size(); x++) {
-            bArray[x] = byteArr.get(x);
-        }
-        */
 
         System.out.println("Size: " + bArray.length);
 
         Bitmap bitmap = BitmapFactory.decodeByteArray(bArray, 0, bArray.length);
         ImageView qrCode = findViewById(R.id.qrCode);
         qrCode.setImageBitmap(bitmap);
+
+
+
+        //Bitmap bitmap = BitmapFactory.decodeByteArray(bArray, 0, bArray.length);
+
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+
+        BitmapFactory.decodeByteArray(bArray, 0, bArray.length,options);
+        options.inJustDecodeBounds = false;
+
+        options.inSampleSize = calculateSampleSize(options.outWidth, options.outHeight, 288, 273);
+
+        options = new BitmapFactory.Options();
+
+        //May use null here as well. The function may interpret the pre-used options variable in ways hard to tell.
+        Bitmap unscaledBitmap = BitmapFactory.decodeResource(res, resId, options);
+
+        if(unscaledBitmap == null)
+        {
+            Log.e("ERR","Failed to decode resource - " + resId + " " + res.toString());
+            return null;
+        }
+
+        Bitmap bitmap1 = Bitmap.createScaledBitmap(bitmap, 288, 273,true);
+
+
+        ImageView qrCode = (ImageView) findViewById(R.id.qrCode);
+        qrCode.setImageBitmap(bitmap1);
+
+
+         */
 
     }
 }
