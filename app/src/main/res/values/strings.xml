@@ -89,4 +89,5 @@
     <string name="check_email">Verify Email</string>
     <string name="recognized_text">Account found! \n Press the button to recover your password.</string>
     <string name="recovery_string">An email has been sent to the address of the account. Please follow the provided instructions to reset your password and return to the Log-in page in order to sign in to the app.</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

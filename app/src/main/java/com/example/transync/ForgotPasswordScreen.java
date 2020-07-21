@@ -56,7 +56,9 @@ public class ForgotPasswordScreen extends Activity {
                     findViewById(R.id.recoveryButton).setVisibility(View.VISIBLE);
                 }
             }
-        });
+        }); /* setOnclickListener */
+
+
         Button returnButton = findViewById(R.id.returnButton);
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +66,8 @@ public class ForgotPasswordScreen extends Activity {
                 Intent i = new Intent(ForgotPasswordScreen.this, SignIn.class);
                 startActivity(i);
             }
-        });
+        }); /* setOnclickListener */
+
 
         Button accountButton = findViewById(R.id.newAccountButton);
         accountButton.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +76,8 @@ public class ForgotPasswordScreen extends Activity {
                 Intent i = new Intent(ForgotPasswordScreen.this, SignUp.class);
                 startActivity(i);
             }
-        });
+        }); /* setOnclickListener */
+
 
         Button recoverButton = findViewById(R.id.recoveryButton);
         recoverButton.setOnClickListener(new View.OnClickListener() {
@@ -87,10 +91,10 @@ public class ForgotPasswordScreen extends Activity {
                 findViewById(R.id.recoveryText).setVisibility(View.VISIBLE);
 
             }
-        });
+        }); /* setOnclickListener */
 
-    }
-}
+    } /* onCreate() */
+} /* ForgotPasswordScreen Class */
 
 
 

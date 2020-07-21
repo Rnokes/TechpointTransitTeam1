@@ -114,7 +114,7 @@ public class HomeScreen extends Activity {
         });
 
         Button map_screen = findViewById(R.id.route_map_button);
-        my_routes.setOnClickListener(new View.OnClickListener() {
+        map_screen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(HomeScreen.this, MapScreen.class);
