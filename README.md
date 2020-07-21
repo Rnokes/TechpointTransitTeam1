@@ -7,12 +7,16 @@ It is designed to allow for easy bus pass purchasing and bus route notifications
 
 ## Technologies
 
-This app was built with Java in Android Studio using the following software and libraries:
-* Android 7.0 Nougat
-* Android Gradle Plugin 4.0.1
-* Gradle 6.1.1
-* PayPal Android SDK 2.16.0
-It uses an SQL database hosted by Heroku for account management.
+This app was built with the following tools and libraries: 
+* [Android Studio](https://developer.android.com/studio/intro)
+* [Android 7.0 Nougat](https://developer.android.com/docs)
+* [PayPal Android SDK](https://github.com/paypal/PayPal-Android-SDK/)
+* [Maps Android SDK](https://developers.google.com/maps/documentation/android-sdk/reference/com/google/android/libraries/maps/package-summary)
+* [QRGenerator by AndroidMad / Mushtaq M A](https://github.com/androidmads/QRGenerator)
+* [Heroku](https://devcenter.heroku.com/categories/reference)
+* [Amazon AWS Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html)
+* [Android Services](https://developer.android.com/guide/components/services)
+
 
 ## Install and usage
 
