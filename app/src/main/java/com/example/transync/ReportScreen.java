@@ -102,9 +102,12 @@ public class ReportScreen extends Activity {
                  *  Need a database call that uses creates a new issue, with the type of issue
                  *  using the issue id(issueID variable), the route name (routeSelect variable),
                  *  and the description of the issue (desc variable).
+                 * INSERT INTO affectedroutes(routeid, problemid, stopid, timestamp, resolved, submitted_by, verified, discription)
+                 * VALUES("+routeselect+",'"+problemid+"','"stopid"', CURRENT_TIMESTAMP, 'No', "+userid+", 'No', '"+discription+"')
                  */
 
-                /* TODO: Replace the route name array with the actual route names from the database, and possible search feature */
+                /* TODO: Replace the route name array with the actual route names from the database, and possible search feature
+                *   SELECT routeid, routename FROM busRoutes*/
 
 
                 /* Sets the visibility of the input boxes and then displays the db call result */
