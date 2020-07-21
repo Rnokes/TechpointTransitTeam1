@@ -13,9 +13,12 @@ This app was built with the following tools and libraries:
 * [PayPal Android SDK](https://github.com/paypal/PayPal-Android-SDK/)
 * [Maps Android SDK](https://developers.google.com/maps/documentation/android-sdk/reference/com/google/android/libraries/maps/package-summary)
 * [QRGenerator by AndroidMad / Mushtaq M A](https://github.com/androidmads/QRGenerator)
-* [Heroku](https://devcenter.heroku.com/categories/reference)
-* [Amazon AWS Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html)
 * [Android Services](https://developer.android.com/guide/components/services)
+* [Heroku](https://devcenter.heroku.com/categories/reference)
+* [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html)
+* [Amazon AWS Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html)
+
+
 
 
 ## Install and usage
