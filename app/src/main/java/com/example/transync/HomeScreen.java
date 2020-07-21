@@ -37,6 +37,7 @@ public class HomeScreen extends Activity {
             e.printStackTrace();
         }
 
+
         String dbNameCall = "Hello " + first + " " + last + "!";
 
         TextView displayName = findViewById(R.id.nameDisplay);

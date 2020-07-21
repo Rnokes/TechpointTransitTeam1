@@ -59,7 +59,7 @@ public class MapScreen extends AppCompatActivity implements OnMapReadyCallback, 
 
         // Position the map's camera near Alice Springs in the center of Australia,
         // and set the zoom factor so most of Australia shows on the screen.
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(-23.684, 133.903), 4));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(39.768506, -86.158035), 4));
 
         // Set listeners for click events.
         googleMap.setOnPolylineClickListener(this);

@@ -9,6 +9,12 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import static com.example.transync.SignIn.stmt;
+import static com.example.transync.SignIn.userid;
+
 /*
  *  Class that handles the manual reporting of issues with bus routes.
  *  Allows users to input the type of issue, the route of the associated issue,
@@ -97,17 +103,17 @@ public class ReportScreen extends Activity {
                         startActivity(i);
                 }
 
-                /*
-                 * TODO:
-                 *  Need a database call that uses creates a new issue, with the type of issue
-                 *  using the issue id(issueID variable), the route name (routeSelect variable),
-                 *  and the description of the issue (desc variable).
-                 * INSERT INTO affectedroutes(routeid, problemid, stopid, timestamp, resolved, submitted_by, verified, discription)
-                 * VALUES("+routeselect+",'"+problemid+"','"stopid"', CURRENT_TIMESTAMP, 'No', "+userid+", 'No', '"+discription+"')
-                 */
 
-                /* TODO: Replace the route name array with the actual route names from the database, and possible search feature
-                *   SELECT routeid, routename FROM busRoutes*/
+                /* Call to database that updates the report field with related info */
+                try {
+                    ResultSet rs = stmt.executeQuery("SELECT routeid FROM busRoutes WHERE routename='" + routeSelect + "'");
+                    rs.next();
+                    int routeId = rs.getInt(1);
+                    stmt.executeUpdate("INSERT INTO affectedroutes(routeid, problemid, stopid, timestamp, resolved, submitted_by, verified, discription)" +
+                                          "VALUES('" + routeId + "', '" + issueId + "', '" + 1 + "', CURRENT_TIMESTAMP, 'No', '" + userid + "', 'No', '" + desc + "')");
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
 
 
                 /* Sets the visibility of the input boxes and then displays the db call result */

@@ -8,10 +8,19 @@
     </array>
 
     <array name= "route_names">
-        <item>"Route 1"</item>
-        <item>"Route 2"</item>
-        <item>"Route 3"</item>
-        <item>"Route 4"</item>
-        <item>"Route 5"</item>
+        <item>"Red Line"</item>
+        <item>"34th Street"</item>
+        <item>"Michigan Street"</item>
+        <item>"Fort Harrison"</item>
+        <item>"E. 25th Street"</item>
+        <item>"Harding"</item>
+        <item>"Washington"</item>
+        <item>"10th Street"</item>
+        <item>"E. 16th Street"</item>
+        <item>"Minnesota"</item>
+        <item>"Raymond"</item>
+        <item>"Prospect"</item>
+        <item>"W. 34th Street"</item>
+        <item>"Beech Grove"</item>
     </array>
 </resources>

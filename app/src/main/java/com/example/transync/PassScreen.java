@@ -49,6 +49,20 @@ public class PassScreen extends Activity {
             e.printStackTrace();
         }
 
+        try {
+            ResultSet rs = stmt.executeQuery("SELECT (expirationdate-current_timestamp) as timeremaining from users where userid=" + userid);
+            while (rs.next()) {
+                String timestamp = rs.getString(1);
+
+                if (timestamp.contains("-")) {
+                    passHolder = false;
+                    break;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         if (!passHolder) {
             TextView passDesc = findViewById(R.id.Active_Pass_Text);
             passDesc.setText("No Pass Available");
