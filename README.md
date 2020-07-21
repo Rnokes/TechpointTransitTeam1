@@ -7,15 +7,19 @@ It is designed to allow for easy bus pass purchasing and bus route notifications
 
 ## Technologies
 
-This app was built in Android Studio using the following software and libraries:
+This app was built with Java in Android Studio using the following software and libraries:
 * Android 7.0 Nougat
 * Android Gradle Plugin 4.0.1
 * Gradle 6.1.1
 * PayPal Android SDK 2.16.0
+It uses an SQL database hosted by Heroku for account management.
 
 ## Install and usage
 
+To download this app, currently the only access is through cloning this repository and installing it manually on an android device.  
+In the future it will be on the Google Play Store.  
 
+To use the app, download and launch it on your android device.
 
 ## Credits
 
