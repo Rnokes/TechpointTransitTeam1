@@ -64,6 +64,10 @@ public class MyRoutesScreen extends Activity {
          *  Need a database call that pulls all routes that a user has
          *  selected as theirs, based on the userid. Then need to display
          *  them in the scroll view.
+         * SELECT busroutes.routename, busstops.stopname
+           FROM busroutes, busstops, userfavorites, routes
+           WHERE busroutes.routeid=routes.routeid AND busstops.stopid=userfavorites.stopid AND userfavorites.stopid=routes.stopid
+           AND busstops.stopid=routes.stopid AND userid= "+userid"
          */
 
 
