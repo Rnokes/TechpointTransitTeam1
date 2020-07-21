@@ -15,6 +15,7 @@ This app was built with the following tools and libraries:
 * [QRGenerator by AndroidMad / Mushtaq M A](https://github.com/androidmads/QRGenerator)
 * [Android Services](https://developer.android.com/guide/components/services)
 * [Heroku](https://devcenter.heroku.com/categories/reference)
+* [PostgreSQL](https://www.postgresql.org/docs/)
 * [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html)
 * [Amazon AWS Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html)
 
