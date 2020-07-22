@@ -9,6 +9,13 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import static com.example.transync.SignIn.stmt;
+import static com.example.transync.SignIn.userid;
+
+
 /*
  * Class that dynamically displays all currently listed alerts in the database,
  * that are associated with a users my routes and their userid. Displays the
@@ -16,6 +23,9 @@ import android.widget.ScrollView;
  */
 
 public class MyAlertsScreen extends Activity {
+
+    public static int currAlertInfo;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,20 +67,101 @@ public class MyAlertsScreen extends Activity {
          */
 
         // Find the ScrollView
-        ScrollView scrollView = (ScrollView) findViewById(R.id.scrollView2);
+        ScrollView scrollViewToday = (ScrollView) findViewById(R.id.scrollView2);
 
         // Create a LinearLayout element
-        LinearLayout linearLayout = new LinearLayout(this);
-        linearLayout.setOrientation(LinearLayout.VERTICAL);
+        LinearLayout linearLayoutToday = new LinearLayout(this);
+        linearLayoutToday.setOrientation(LinearLayout.VERTICAL);
 
         // Add Buttons
-        Button button = new Button(this);
-        button.setText("Some text");
-        linearLayout.addView(button);
+
+
+        try {
+            ResultSet rs = stmt.executeQuery("Select busstops.stopname, busroutes.routename, problemdiscription, affectedroutes.problemid\n" +
+                                                "from busstops, busroutes, affectedroutes, routes, problems, userfavorites\n" +
+                                                "WHERE problems.problemid=affectedroutes.problemid\n" +
+                                                "    AND routes.routeid=busroutes.routeid\n" +
+                                                "    AND routes.stopid=busstops.stopid\n" +
+                                                "    AND routes.routeid=affectedroutes.routeid\n" +
+                                                "    AND routes.stopid=affectedroutes.stopid\n" +
+                                                "    AND affectedroutes.routeid=routes.routeid\n" +
+                                                "    AND affectedroutes.stopid=routes.stopid\n" +
+                                                "    AND affectedroutes.routeid=busroutes.routeid\n" +
+                                                "    AND affectedroutes.stopid=busstops.stopid\n" +
+                                                "    AND userfavorites.stopid=busstops.stopid\n" +
+                                                "    AND userid="+ userid +"\n" +
+                                                "    AND (current_timestamp-affectedroutes.timestamp)<'1 day'");
+
+            while(rs.next()) {
+                Button button = new Button(this);
+                button.setText(rs.getString(2) + " | " + rs.getString(3));
+                button.setBackground(getResources().getDrawable(R.drawable.button_outline));
+                final int probId = rs.getInt(4);
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        currAlertInfo = probId;
+                        Intent i = new Intent(MyAlertsScreen.this, AlertDetailsScreen.class);
+                        startActivity(i);
+                    }
+                }); /* setOnclickListener */
+                linearLayoutToday.addView(button);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         // Add the LinearLayout element to the ScrollView
-        scrollView.addView(linearLayout);
+        scrollViewToday.addView(linearLayoutToday);
 
+
+        // Find the ScrollView
+        ScrollView scrollViewYest = (ScrollView) findViewById(R.id.scrollView3);
+
+        // Create a LinearLayout element
+        LinearLayout linearLayoutYest = new LinearLayout(this);
+        linearLayoutYest.setOrientation(LinearLayout.VERTICAL);
+
+        // Add Buttons
+        try {
+            ResultSet rs = stmt.executeQuery("Select busstops.stopname, busroutes.routename, problemdiscription, affectedroutes.problemid\n" +
+                                                "from busstops, busroutes, affectedroutes, routes, problems, userfavorites\n" +
+                                                "WHERE problems.problemid=affectedroutes.problemid\n" +
+                                                "    AND routes.routeid=busroutes.routeid\n" +
+                                                "    AND routes.stopid=busstops.stopid\n" +
+                                                "    AND routes.routeid=affectedroutes.routeid\n" +
+                                                "    AND routes.stopid=affectedroutes.stopid\n" +
+                                                "    AND affectedroutes.routeid=routes.routeid\n" +
+                                                "    AND affectedroutes.stopid=routes.stopid\n" +
+                                                "    AND affectedroutes.routeid=busroutes.routeid\n" +
+                                                "    AND affectedroutes.stopid=busstops.stopid\n" +
+                                                "    AND userfavorites.stopid=busstops.stopid\n" +
+                                                "    AND userid="+ userid +"\n" +
+                                                "    AND (current_timestamp-affectedroutes.timestamp)<'2 day'" +
+                                                "    AND (current_timestamp-affectedroutes.timestamp)>'1 day'");
+
+            while(rs.next()) {
+                Button button = new Button(this);
+                button.setText(rs.getString(2) + " | " + rs.getString(3));
+                button.setBackground(getResources().getDrawable(R.drawable.button_outline));
+                final int probId = rs.getInt(4);
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        currAlertInfo = probId;
+                        Intent i = new Intent(MyAlertsScreen.this, AlertDetailsScreen.class);
+                        startActivity(i);
+                    }
+                }); /* setOnclickListener */
+
+                linearLayoutYest.addView(button);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        // Add the LinearLayout element to the ScrollView
+        scrollViewYest.addView(linearLayoutYest);
 
     } /* onCreate() */
 } /* MyAlertsScreen Class */
