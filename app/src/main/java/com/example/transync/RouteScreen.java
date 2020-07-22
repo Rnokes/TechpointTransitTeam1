@@ -16,6 +16,8 @@ import static com.example.transync.SignIn.userid;
 
 public class RouteScreen extends Activity {
     String routeName = null;
+    int routeID;
+    int stopID;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -81,16 +83,24 @@ public class RouteScreen extends Activity {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        try{
+            ResultSet rs1 = stmt.executeQuery("SELECT routeID FROM busRoutes WHERE routename ='" + routeName + "'");
+            rs1.next();
+            routeID = rs1.getInt(1);
+            ResultSet rs2 = stmt.executeQuery("SELECT stopID FROM routes WHERE routeID = '" + routeID + "'");
+            rs2.next();
+            stopID = rs2.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
         addRoute.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
-                    ResultSet rs = stmt.executeQuery("SELECT routeID FROM busRoutes WHERE routename ='" + routeName + "'");
-                    rs.next();
-                    int routeID = rs.getInt(1);
-                    ResultSet rs2 = stmt.executeQuery("SELECT stopID FROM routes WHERE routeID = '" + routeID + "'");
-                    rs2.next();
-                    int stopID = rs2.getInt(1);
+
                     stmt.executeUpdate("INSERT INTO userfavorites(userid, stopid)" + "VALUES( '" + userid + "','" + stopID + "') ");
                     addRoute.setVisibility(View.GONE);
                     removeRoute.setVisibility(View.VISIBLE);
@@ -105,12 +115,7 @@ public class RouteScreen extends Activity {
             @Override
             public void onClick(View view) {
                 try {
-                    ResultSet rs = stmt.executeQuery("SELECT routeID FROM busRoutes WHERE routename ='" + routeName + "'");
-                    rs.next();
-                    int routeID = rs.getInt(1);
-                    ResultSet rs2 = stmt.executeQuery("SELECT stopID FROM routes WHERE routeID = '" + routeID + "'");
-                    rs2.next();
-                    int stopID = rs2.getInt(1);
+
                     stmt.executeUpdate("DELETE FROM userfavorites WHERE userid = '" + userid + "' AND stopid = '" + stopID + "' ");
                     removeRoute.setVisibility(View.GONE);
                     addRoute.setVisibility(View.VISIBLE);
