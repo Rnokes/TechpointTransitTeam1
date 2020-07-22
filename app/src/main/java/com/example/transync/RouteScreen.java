@@ -67,10 +67,8 @@ public class RouteScreen extends Activity {
         ResultSet rs;
         try {
             rs = stmt.executeQuery("SELECT busroutes.routename, busstops.stopname FROM busroutes, busstops, userfavorites, routes WHERE busroutes.routeid=routes.routeid AND busstops.stopid=userfavorites.stopid AND userfavorites.stopid=routes.stopid AND busstops.stopid=routes.stopid AND userid= '" + userid + "'");
-            int j = 0;
             while (rs.next()) {
-                j++;
-                if (routeName.equals(rs.getString(j))) {
+                if (routeName.equals(rs.getString(1))) {
                     addRoute.setVisibility(View.GONE);
                     removeRoute.setVisibility(View.VISIBLE);
                     break;
