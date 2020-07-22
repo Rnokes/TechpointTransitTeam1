@@ -88,7 +88,7 @@ public class MyRoutesScreen extends Activity {
             Button button = new Button(this);
             button.setText(route_names[i]);
             button.setVisibility(View.GONE);
-            button.setPadding(20,20,20,20);
+            button.setPadding(20, 20, 20, 20);
             button.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
             button.setTextSize(18);
             linearLayout.addView(button);
@@ -104,10 +104,8 @@ public class MyRoutesScreen extends Activity {
             ResultSet rs;
             try {
                 rs = stmt.executeQuery("SELECT busroutes.routename, busstops.stopname FROM busroutes, busstops, userfavorites, routes WHERE busroutes.routeid=routes.routeid AND busstops.stopid=userfavorites.stopid AND userfavorites.stopid=routes.stopid AND busstops.stopid=routes.stopid AND userid= '" + userid + "'");
-                int j = 0;
                 while (rs.next()) {
-                    j++;
-                    if (route_names[i].equals(rs.getString(j))) {
+                    if (route_names[i].equals(rs.getString(1))) {
                         button.setVisibility(View.VISIBLE);
                         final int finalI = i;
                         button.setOnClickListener(new View.OnClickListener() {
