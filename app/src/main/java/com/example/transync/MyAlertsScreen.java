@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 
 /*
  * Class that dynamically displays all currently listed alerts in the database,
@@ -52,6 +55,22 @@ public class MyAlertsScreen extends Activity {
          *  to the scroll view. We need the name of the route that has the
          *  issue, the type of issue, and possibly the description of the issue.
          */
+
+        // Find the ScrollView
+        ScrollView scrollView = (ScrollView) findViewById(R.id.scrollView2);
+
+        // Create a LinearLayout element
+        LinearLayout linearLayout = new LinearLayout(this);
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
+
+        // Add Buttons
+        Button button = new Button(this);
+        button.setText("Some text");
+        linearLayout.addView(button);
+
+        // Add the LinearLayout element to the ScrollView
+        scrollView.addView(linearLayout);
+
 
     } /* onCreate() */
 } /* MyAlertsScreen Class */
