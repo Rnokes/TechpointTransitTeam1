@@ -16,6 +16,7 @@ import static com.example.transync.SignIn.userid;
 
 public class RouteScreen extends Activity {
     String routeName = null;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +53,7 @@ public class RouteScreen extends Activity {
 
         if (extras != null) {
             routeName = extras.getString("selectedRoute");
-           
+
         } else {
             Intent i = new Intent(RouteScreen.this, HomeScreen.class);
             startActivity(i);
@@ -62,6 +63,7 @@ public class RouteScreen extends Activity {
         routeText.setText(routeName);
 
         final Button addRoute = findViewById(R.id.addMyRoutes);
+        final Button removeRoute = findViewById(R.id.removeMyRoutes);
         ResultSet rs;
         try {
             rs = stmt.executeQuery("SELECT busroutes.routename, busstops.stopname FROM busroutes, busstops, userfavorites, routes WHERE busroutes.routeid=routes.routeid AND busstops.stopid=userfavorites.stopid AND userfavorites.stopid=routes.stopid AND busstops.stopid=routes.stopid AND userid= '" + userid + "'");
@@ -70,7 +72,12 @@ public class RouteScreen extends Activity {
                 j++;
                 if (routeName.equals(rs.getString(j))) {
                     addRoute.setVisibility(View.GONE);
+                    removeRoute.setVisibility(View.VISIBLE);
                     break;
+                }
+                else{
+                    removeRoute.setVisibility(View.GONE);
+                    addRoute.setVisibility(View.VISIBLE);
                 }
             }
         } catch (SQLException e) {
@@ -88,11 +95,32 @@ public class RouteScreen extends Activity {
                     int stopID = rs2.getInt(1);
                     stmt.executeUpdate("INSERT INTO userfavorites(userid, stopid)" + "VALUES( '" + userid + "','" + stopID + "') ");
                     addRoute.setVisibility(View.GONE);
+                    removeRoute.setVisibility(View.VISIBLE);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
         });
-        
+
+
+        removeRoute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    ResultSet rs = stmt.executeQuery("SELECT routeID FROM busRoutes WHERE routename ='" + routeName + "'");
+                    rs.next();
+                    int routeID = rs.getInt(1);
+                    ResultSet rs2 = stmt.executeQuery("SELECT stopID FROM routes WHERE routeID = '" + routeID + "'");
+                    rs2.next();
+                    int stopID = rs2.getInt(1);
+                    stmt.executeUpdate("DELETE FROM userfavorites WHERE userid = '" + userid + "' AND stopid = '" + stopID + "' ");
+                    removeRoute.setVisibility(View.GONE);
+                    addRoute.setVisibility(View.VISIBLE);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 }

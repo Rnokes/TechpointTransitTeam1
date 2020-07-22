@@ -186,7 +186,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@color/colorGreen"
+        android:background="@color/colorBlue"
         android:text="@string/remove_my_routes"
         android:textSize="18sp"
         android:visibility="gone"
