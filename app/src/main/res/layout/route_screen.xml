@@ -6,19 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/colorOrange">
 
-    <Button
-        android:id="@+id/addMyRoutes"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:background="@color/colorGreen"
-        android:text="@string/add_my_routes"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/routeMap2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <View
         android:id="@+id/top_back7"
         android:layout_width="417dp"
@@ -121,18 +108,18 @@
         android:id="@+id/routeMap2"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:background="@color/colorGreen"
         android:text="@string/route_map"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/routeAlerts"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/routeName" />
 
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="0dp"
-        android:layout_height="320dp"
+        android:layout_height="0dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="15dp"
@@ -140,34 +127,28 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/routeAlerts">
 
         <LinearLayout
+            android:id="@+id/routeIssues"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="Button" />
-        </LinearLayout>
+            android:orientation="vertical" />
     </ScrollView>
 
     <TextView
         android:id="@+id/routeAlerts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
+        android:layout_marginTop="68dp"
         android:text="@string/route_alerts"
         android:textColor="@color/bus_icon_background"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="@+id/scrollView2"
-        app:layout_constraintStart_toStartOf="@+id/scrollView2" />
+        app:layout_constraintStart_toStartOf="@+id/scrollView2"
+        app:layout_constraintTop_toBottomOf="@+id/routeMap2" />
 
     <TextView
         android:id="@+id/routeName"
@@ -181,12 +162,36 @@
         android:paddingTop="15dp"
         android:paddingEnd="10dp"
         android:paddingBottom="15dp"
-        android:text="TODO:RouteName"
         android:textAlignment="textStart"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/top_back7" />
+
+    <Button
+        android:id="@+id/addMyRoutes"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorGreen"
+        android:text="@string/add_my_routes"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/routeMap2" />
+
+    <Button
+        android:id="@+id/removeMyRoutes"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorBlue"
+        android:text="@string/remove_my_routes"
+        android:textSize="18sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/routeMap2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

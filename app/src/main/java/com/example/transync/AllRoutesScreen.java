@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 
 /*
@@ -63,7 +64,33 @@ public class AllRoutesScreen extends Activity {
         * TODO:
         *  Need to make a database call that gets all current routes listed in the database,
         *  and then add each one as a button in the list view on this screen.
+        *
+        * SELECT busroutes.routename
+           FROM busroutes, routes
+           WHERE busroutes.routeid=routes.routeid
         */
+        LinearLayout linearLayout = findViewById(R.id.routeLayout1);
+        final String route_names[] = getResources().getStringArray(R.array.route_names);
+        for(int i = 0; i<route_names.length; i++){
+            Button button = new Button(this);
+            button.setText(route_names[i]);
+            button.setPadding(20,20,20,20);
+            button.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
+            button.setTextSize(18);
+
+            linearLayout.addView(button);
+
+            final int finalI = i;
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(AllRoutesScreen.this, RouteScreen.class);
+                    intent.putExtra("selectedRoute",route_names[finalI]);
+                    startActivity(intent);
+                }
+            }); /* setOnclickListener */
+
+        }
 
     } /* onCreate() */
 } /* AllRoutesScreen Class */
