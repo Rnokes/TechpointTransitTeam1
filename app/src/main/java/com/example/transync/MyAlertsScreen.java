@@ -101,8 +101,9 @@ public class MyAlertsScreen extends Activity {
                     @Override
                     public void onClick(View view) {
                         currAlertInfo = probId;
-                        Intent i = new Intent(MyAlertsScreen.this, AlertDetailsScreen.class);
-                        startActivity(i);
+                        Intent intent = new Intent(MyAlertsScreen.this, AlertDetailsScreen.class);
+                        intent.putExtra("selectedAlert",currAlertInfo);
+                        startActivity(intent);
                     }
                 }); /* setOnclickListener */
                 linearLayoutToday.addView(button);
@@ -149,8 +150,9 @@ public class MyAlertsScreen extends Activity {
                     @Override
                     public void onClick(View view) {
                         currAlertInfo = probId;
-                        Intent i = new Intent(MyAlertsScreen.this, AlertDetailsScreen.class);
-                        startActivity(i);
+                        Intent intent = new Intent(MyAlertsScreen.this, AlertDetailsScreen.class);
+                        intent.putExtra("selectedAlert",currAlertInfo);
+                        startActivity(intent);
                     }
                 }); /* setOnclickListener */
 

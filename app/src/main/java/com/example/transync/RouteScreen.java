@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.sql.ResultSet;
@@ -18,6 +20,7 @@ public class RouteScreen extends Activity {
     String routeName = null;
     int routeID;
     int stopID;
+    public static int currAlertInfo;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -124,6 +127,48 @@ public class RouteScreen extends Activity {
                 }
             }
         });
+        ScrollView scrollViewIssues = (ScrollView) findViewById(R.id.scrollView2);
 
+        // Create a LinearLayout element
+        LinearLayout linearLayoutIssues = new LinearLayout(this);
+        linearLayoutIssues.setOrientation(LinearLayout.VERTICAL);
+        try {
+            ResultSet rs3 = stmt.executeQuery("Select busstops.stopname, busroutes.routename, problemdiscription, affectedroutes.problemid\n" +
+                    "from busstops, busroutes, affectedroutes, routes, problems, userfavorites\n" +
+                    "WHERE problems.problemid=affectedroutes.problemid\n" +
+                    "    AND routes.routeid=busroutes.routeid\n" +
+                    "    AND routes.stopid=busstops.stopid\n" +
+                    "    AND routes.routeid=affectedroutes.routeid\n" +
+                    "    AND routes.stopid=affectedroutes.stopid\n" +
+                    "    AND affectedroutes.routeid=routes.routeid\n" +
+                    "    AND affectedroutes.stopid=routes.stopid\n" +
+                    "    AND affectedroutes.routeid=busroutes.routeid\n" +
+                    "    AND affectedroutes.stopid=busstops.stopid\n" +
+                    "    AND routes.routeid = '"+routeID+"'\n" +
+                    "    AND (current_timestamp-affectedroutes.timestamp)<'1 day'");
+
+            while(rs3.next()) {
+                Button button = new Button(this);
+                button.setText(rs3.getString(2) + " | " + rs3.getString(3));
+                button.setBackground(getResources().getDrawable(R.drawable.button_outline));
+                final int probId = rs3.getInt(4);
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        currAlertInfo = probId;
+                        Intent intent = new Intent(RouteScreen.this, AlertDetailsScreen.class);
+                        intent.putExtra("selectedAlert",currAlertInfo);
+                        startActivity(intent);
+                    }
+                }); /* setOnclickListener */
+
+                linearLayoutIssues.addView(button);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        // Add the LinearLayout element to the ScrollView
+        scrollViewIssues.addView(linearLayoutIssues);
     }
 }
