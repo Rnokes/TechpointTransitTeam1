@@ -14,7 +14,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import static com.example.transync.MyAlertsScreen.currAlertInfo;
+
 import static com.example.transync.SignIn.stmt;
 
 /*
@@ -24,10 +24,21 @@ import static com.example.transync.SignIn.stmt;
 
 public class AlertDetailsScreen extends Activity {
 
+    int currAlertInfo;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.alert_detail_screen);
+        Bundle extras = getIntent().getExtras();
+
+        if (extras != null) {
+            currAlertInfo = extras.getInt("selectedAlert");
+
+        } else {
+            Intent i = new Intent(AlertDetailsScreen.this, HomeScreen.class);
+            startActivity(i);
+        }
 
         /*
          *  The click listener for the menu button, sets that the
