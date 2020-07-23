@@ -159,5 +159,5 @@ public class ReportScreen extends Activity {
             }
         }); /* setOnclickListener */
 
-    }
-}
+    } /* onCreate() */
+} /* ReportScreen Class */

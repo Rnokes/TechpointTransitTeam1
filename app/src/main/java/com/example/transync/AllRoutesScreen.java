@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
-
 /*
  * Class that dynamically displays all currently listed routes in the database.
  * Also allows for navigation to see more information about routes and view the route map.
@@ -61,13 +60,9 @@ public class AllRoutesScreen extends Activity {
         }); /* setOnclickListener */
 
         /*
-        * TODO:
-        *  Need to make a database call that gets all current routes listed in the database,
-        *  and then add each one as a button in the list view on this screen.
-        *
-        * SELECT busroutes.routename
-           FROM busroutes, routes
-           WHERE busroutes.routeid=routes.routeid
+        *  The following gets all routes that are listed in the database and then
+        *  displays them in a linearLayout on the screen, and sets onClick listeners
+        *  for each route in the database that lead to the Route Info Panel.
         */
         LinearLayout linearLayout = findViewById(R.id.routeLayout1);
         final String route_names[] = getResources().getStringArray(R.array.route_names);

@@ -58,24 +58,16 @@ public class MyAlertsScreen extends Activity {
         }); /* setOnclickListener */
 
 
-        /*
-         * TODO:
-         *  Need a database calls that gets all of a user's route alerts,
-         *  based on their routes and their userid. Then need to add each
-         *  to the scroll view. We need the name of the route that has the
-         *  issue, the type of issue, and possibly the description of the issue.
-         */
 
-        // Find the ScrollView
+        /* Gets the scrollview responsible for yesterday and puts set a linearlayout up. */
         ScrollView scrollViewToday = (ScrollView) findViewById(R.id.scrollView2);
-
-        // Create a LinearLayout element
         LinearLayout linearLayoutToday = new LinearLayout(this);
         linearLayoutToday.setOrientation(LinearLayout.VERTICAL);
 
-        // Add Buttons
-
-
+        /*
+         * Following try catch gets issues related to the current day based on the user
+         * and then setOnClickListeners to them to make them go to the alert details screen.
+         */
         try {
             ResultSet rs = stmt.executeQuery("Select busstops.stopname, busroutes.routename, problemdiscription, affectedroutes.problemid\n" +
                                                 "from busstops, busroutes, affectedroutes, routes, problems, userfavorites\n" +
@@ -110,19 +102,18 @@ public class MyAlertsScreen extends Activity {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        // Add the LinearLayout element to the ScrollView
         scrollViewToday.addView(linearLayoutToday);
 
 
-        // Find the ScrollView
+        /* Gets the scrollview responsible for yesterday and puts set a linearlayout up. */
         ScrollView scrollViewYest = (ScrollView) findViewById(R.id.scrollView3);
-
-        // Create a LinearLayout element
         LinearLayout linearLayoutYest = new LinearLayout(this);
         linearLayoutYest.setOrientation(LinearLayout.VERTICAL);
 
-        // Add Buttons
+        /*
+         * Following try catch gets issues related to the previous day based on the user
+         * and then setOnClickListeners to them to make them go to the alert details screen.
+         */
         try {
             ResultSet rs = stmt.executeQuery("Select busstops.stopname, busroutes.routename, problemdiscription, affectedroutes.problemid\n" +
                                                 "from busstops, busroutes, affectedroutes, routes, problems, userfavorites\n" +
@@ -159,8 +150,6 @@ public class MyAlertsScreen extends Activity {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        // Add the LinearLayout element to the ScrollView
         scrollViewYest.addView(linearLayoutYest);
 
     } /* onCreate() */

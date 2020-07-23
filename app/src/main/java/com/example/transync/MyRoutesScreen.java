@@ -73,14 +73,11 @@ public class MyRoutesScreen extends Activity {
         }); /* setOnclickListener */
 
 
-        /* TODO:
-         *  Need a database call that pulls all routes that a user has
-         *  selected as theirs, based on the userid. Then need to display
-         *  them in the scroll view.
-         * SELECT busroutes.routename, busstops.stopname
-           FROM busroutes, busstops, userfavorites, routes
-           WHERE busroutes.routeid=routes.routeid AND busstops.stopid=userfavorites.stopid AND userfavorites.stopid=routes.stopid
-           AND busstops.stopid=routes.stopid AND userid= "+userid"
+        /*
+         * Following code finds the correct scrollview and then makes a database
+         * call that requests all routes that a user has selected as their favorite
+         * and then sets buttons equal to the route names that lead to their
+         * respective route information page.
          */
         LinearLayout linearLayout = findViewById(R.id.routeLayout);
         final String[] route_names = getResources().getStringArray(R.array.route_names);

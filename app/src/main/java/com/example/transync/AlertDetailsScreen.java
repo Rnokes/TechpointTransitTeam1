@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -57,6 +55,7 @@ public class AlertDetailsScreen extends Activity {
             }
         }); /* setOnclickListener */
 
+        /* Try-Catch for getting all database information on the alert, and then displays info */
         try {
             ResultSet rs = stmt.executeQuery("SELECT affectedroutes.timestamp, affectedroutes.routeid,busroutes.routename,problems.problemdiscription\n" +
                                                 "FROM affectedroutes, busroutes, problems\n" +

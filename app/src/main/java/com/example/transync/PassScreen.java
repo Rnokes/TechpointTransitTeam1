@@ -14,6 +14,12 @@ import java.sql.SQLException;
 import static com.example.transync.SignIn.stmt;
 import static com.example.transync.SignIn.userid;
 
+/*
+ * The following class determines if the the user has a valid pass
+ * and then sets tbe view page up accordingly, either redirecting to
+ * the buy a pass screen or pulling the pass from the database and displaying it.
+ */
+
 public class PassScreen extends Activity {
 
     @SuppressLint("SetTextI18n")
@@ -25,7 +31,10 @@ public class PassScreen extends Activity {
         findViewById(R.id.noPassNotif).setVisibility(View.INVISIBLE);
         findViewById(R.id.qrCode).setVisibility(View.INVISIBLE);
 
-
+        /*
+         *  The click listener for the menu button, sets that the
+         *  button should return to main menu upon press.
+         */
         ImageButton menu = findViewById(R.id.menubutton3);
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,8 +42,10 @@ public class PassScreen extends Activity {
                 Intent i = new Intent(PassScreen.this, HomeScreen.class);
                 startActivity(i);
             }
-        });
+        }); /* setOnclickListener */
 
+
+        /* Following to try-catches are database calls to determine if the user has a valid pass */
         boolean passHolder = false;
         try {
             ResultSet rs = stmt.executeQuery("SELECT CASE WHEN buspassid_fk IS NOT NULL THEN 1 ELSE 0 END FROM users WHERE userid=" + userid);
@@ -63,12 +74,17 @@ public class PassScreen extends Activity {
             e.printStackTrace();
         }
 
+        /*
+         * This if statement determines if the user has a pass based on the previous checks
+         * and then either sets the views to negative or displays the qr code.
+         */
         if (!passHolder) {
             TextView passDesc = findViewById(R.id.Active_Pass_Text);
             passDesc.setText("No Pass Available");
             findViewById(R.id.noPassNotif).setVisibility(View.VISIBLE);
-        } else {
-
+        }
+        else {
+            /* Following Code Determines the pass type and sets the view fields accordingly */
             String passType = "";
             try {
                 ResultSet rs = stmt.executeQuery("SELECT buspass.typediscription from buspass, users where buspass.buspassid=users.buspassid_fk AND userid=" + userid);
@@ -84,6 +100,8 @@ public class PassScreen extends Activity {
 
             findViewById(R.id.qrCode).setVisibility(View.VISIBLE);
 
+
+            /* Following code finds the date and time of the pass, and sets fields in the view accordingly */
             ResultSet rs = null;
             String timestamp = "";
 
@@ -110,10 +128,14 @@ public class PassScreen extends Activity {
                 timestamp = timestamp.substring(0, timestamp.indexOf(":"));
                 num.setText(timestamp);
             }
-
         }
+    } /* onCreate() */
 
-    }
+    /*
+     * A method for pulling a qr code from the database, decoding it into a bitmap,
+     * and then displaying the qr code to the app. Is currently buggy, so a placeholder
+     * image is used instead on the main screen.
+     */
 
     private void displayQRCode() throws SQLException {
 
@@ -124,7 +146,6 @@ public class PassScreen extends Activity {
         findViewById(R.id.qrCode).setVisibility(View.VISIBLE);
 
         /*
-
         System.out.println("Size: " + bArray.length);
 
         Bitmap bitmap = BitmapFactory.decodeByteArray(bArray, 0, bArray.length);
@@ -132,20 +153,15 @@ public class PassScreen extends Activity {
         qrCode.setImageBitmap(bitmap);
 
 
-
-        //Bitmap bitmap = BitmapFactory.decodeByteArray(bArray, 0, bArray.length);
-
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
 
         BitmapFactory.decodeByteArray(bArray, 0, bArray.length,options);
+
         options.inJustDecodeBounds = false;
-
         options.inSampleSize = calculateSampleSize(options.outWidth, options.outHeight, 288, 273);
-
         options = new BitmapFactory.Options();
 
-        //May use null here as well. The function may interpret the pre-used options variable in ways hard to tell.
         Bitmap unscaledBitmap = BitmapFactory.decodeResource(res, resId, options);
 
         if(unscaledBitmap == null)
@@ -156,12 +172,9 @@ public class PassScreen extends Activity {
 
         Bitmap bitmap1 = Bitmap.createScaledBitmap(bitmap, 288, 273,true);
 
-
         ImageView qrCode = (ImageView) findViewById(R.id.qrCode);
         qrCode.setImageBitmap(bitmap1);
 
-
          */
-
-    }
-}
+    } /* displayQRCode() */
+} /* PassScreen Class */

@@ -12,6 +12,11 @@ import java.sql.SQLException;
 
 import static com.example.transync.SignIn.stmt;
 
+/*
+ * This class represents the Forgot Password Screen that
+ * lets the user enter their email and get a change password email
+ * sent to the email they entered if the email is in the database.
+ */
 
 public class ForgotPasswordScreen extends Activity {
 

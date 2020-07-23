@@ -25,6 +25,7 @@ public class HomeScreen extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
 
+        /* Gets and displays users name from database */
         String first = "";
         String last = "";
         try {
@@ -37,18 +38,23 @@ public class HomeScreen extends Activity {
             e.printStackTrace();
         }
 
-
         String dbNameCall = "Hello " + first + " " + last + "!";
 
         TextView displayName = findViewById(R.id.nameDisplay);
         displayName.setText(dbNameCall);
 
+        /* Finds and displays current date and time */
         final TextView timedisp = findViewById(R.id.texttimedisp);
         @SuppressLint("SimpleDateFormat")
         DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss z");
         String date = df.format(Calendar.getInstance().getTime());
         timedisp.setText(date);
 
+
+        /*
+         *  Following code selects each button on the home screen and sets
+         *  onClickListeners for them to make sure they go to the right screen on press.
+         */
 
         ImageButton passButton = findViewById(R.id.passButton);
         passButton.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +63,7 @@ public class HomeScreen extends Activity {
                 Intent i = new Intent(HomeScreen.this, PassScreen.class);
                 startActivity(i);
             }
-        });
+        }); /* setOnclickListener */
 
         Button myAlertButton = findViewById(R.id.my_alert_button);
         myAlertButton.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +72,7 @@ public class HomeScreen extends Activity {
                 Intent i = new Intent(HomeScreen.this, MyAlertsScreen.class);
                 startActivity(i);
             }
-        });
+        }); /* setOnclickListener */
 
 
         Button purchase = findViewById(R.id.buy_pass_button);
@@ -76,7 +82,7 @@ public class HomeScreen extends Activity {
                 Intent i = new Intent(HomeScreen.this, PurchaseScreen.class);
                 startActivity(i);
             }
-        });
+        }); /* setOnclickListener */
 
         Button pass = findViewById(R.id.my_pass_button);
         pass.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +91,7 @@ public class HomeScreen extends Activity {
                 Intent i = new Intent(HomeScreen.this, PassScreen.class);
                 startActivity(i);
             }
-        });
+        }); /* setOnclickListener */
 
         Button report = findViewById(R.id.report_button);
         report.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +100,7 @@ public class HomeScreen extends Activity {
                 Intent i = new Intent(HomeScreen.this, ReportScreen.class);
                 startActivity(i);
             }
-        });
+        }); /* setOnclickListener */
 
         Button all_routes = findViewById(R.id.all_routes_button);
         all_routes.setOnClickListener(new View.OnClickListener() {
@@ -103,7 +109,7 @@ public class HomeScreen extends Activity {
                 Intent i = new Intent(HomeScreen.this, AllRoutesScreen.class);
                 startActivity(i);
             }
-        });
+        }); /* setOnclickListener */
 
         Button my_routes = findViewById(R.id.my_routes_button);
         my_routes.setOnClickListener(new View.OnClickListener() {
@@ -112,7 +118,7 @@ public class HomeScreen extends Activity {
                 Intent i = new Intent(HomeScreen.this, MyRoutesScreen.class);
                 startActivity(i);
             }
-        });
+        }); /* setOnclickListener */
 
         Button map_screen = findViewById(R.id.route_map_button);
         map_screen.setOnClickListener(new View.OnClickListener() {
@@ -121,8 +127,7 @@ public class HomeScreen extends Activity {
                 Intent i = new Intent(HomeScreen.this, MapScreen.class);
                 startActivity(i);
             }
-        });
+        }); /* setOnclickListener */
 
-    }
-
-}
+    } /* onCreate() */
+} /* HomeScreen Class */

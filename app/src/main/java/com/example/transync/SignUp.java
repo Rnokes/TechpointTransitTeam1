@@ -12,6 +12,12 @@ import java.util.Objects;
 
 import static com.example.transync.SignIn.stmt;
 
+/*
+ * Class that is responsible for handling account creation
+ * and sign up. Pulls all entered data from the user and
+ * registered a new account with the database. Sending live
+ * emails is planned.
+ */
 public class SignUp extends Activity {
 
     @Override
@@ -19,13 +25,16 @@ public class SignUp extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up);
 
+        /* OnClick Listener for the register button, pulls all data and registers the account with the database */
         Button register = findViewById(R.id.register_button);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /* Set Text Error Visibilities */
                 findViewById(R.id.infoErr).setVisibility(View.INVISIBLE);
                 findViewById(R.id.passErr).setVisibility(View.INVISIBLE);
 
+                /* Following calls pull the entered data from the inputs */
                 EditText fname = findViewById(R.id.firstNameEntry);
                 final String firstName = fname.getText().toString();
 
@@ -44,13 +53,16 @@ public class SignUp extends Activity {
                 EditText passE = findViewById(R.id.passwordConfirm);
                 final String passConfirm = passE.getText().toString();
 
+                /* First do checks to make sure entered data is valid, if so makes the account and calls the database */
                 if (Objects.equals(firstName, "") || Objects.equals(lastName, "") || Objects.equals(email, "") || Objects.equals(phone, "")) {
                     System.out.println("Reg info entered incorrectly.");
                     findViewById(R.id.infoErr).setVisibility(View.VISIBLE);
-                } else if (!passStart.equals(passConfirm)) { // Passwords not matching
+                }
+                else if (!passStart.equals(passConfirm)) { // Passwords not matching
                     System.out.println("Reg passwords do not match.");
                     findViewById(R.id.passErr).setVisibility(View.VISIBLE);
-                } else {  // Set calls to db and enter RegComp Screen
+                }
+                else {  // Set calls to db and enter RegComp Screen
                     try {
                         stmt.executeUpdate("INSERT INTO users (firstname, lastname, email, passhash, phone, sms)" +
                                 "VALUES('" + firstName + "','" + lastName + "','" + email + "', crypt('" + passStart + "', gen_salt('bf')),'" + phone + "','yes')");
@@ -62,10 +74,7 @@ public class SignUp extends Activity {
                     Intent i = new Intent(SignUp.this, RegComp.class);
                     startActivity(i);
                 }
-
-            }
-        });
-
-    }
-
-}
+            } /* onclick() */
+        }); /* setOnclickListener */
+    } /* onCreate() */
+} /* SignUp Class */
