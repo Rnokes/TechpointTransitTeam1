@@ -21,6 +21,7 @@ public class RouteScreen extends Activity {
     int routeID;
     int stopID;
     public static int currAlertInfo;
+    int prevProbID;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -132,6 +133,7 @@ public class RouteScreen extends Activity {
         // Create a LinearLayout element
         LinearLayout linearLayoutIssues = new LinearLayout(this);
         linearLayoutIssues.setOrientation(LinearLayout.VERTICAL);
+
         try {
             ResultSet rs3 = stmt.executeQuery("Select busstops.stopname, busroutes.routename, problemdiscription, affectedroutes.problemid\n" +
                     "from busstops, busroutes, affectedroutes, routes, problems, userfavorites\n" +
@@ -152,17 +154,20 @@ public class RouteScreen extends Activity {
                 button.setText(rs3.getString(2) + " | " + rs3.getString(3));
                 button.setBackground(getResources().getDrawable(R.drawable.button_outline));
                 final int probId = rs3.getInt(4);
-                button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        currAlertInfo = probId;
-                        Intent intent = new Intent(RouteScreen.this, AlertDetailsScreen.class);
-                        intent.putExtra("selectedAlert",currAlertInfo);
-                        startActivity(intent);
-                    }
-                }); /* setOnclickListener */
+                if (probId != prevProbID) {
+                    button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            currAlertInfo = probId;
+                            Intent intent = new Intent(RouteScreen.this, AlertDetailsScreen.class);
+                            intent.putExtra("selectedAlert", currAlertInfo);
+                            startActivity(intent);
+                        }
+                    }); /* setOnclickListener */
 
-                linearLayoutIssues.addView(button);
+                    linearLayoutIssues.addView(button);
+                }
+                prevProbID = probId;
             }
         } catch (SQLException e) {
             e.printStackTrace();
