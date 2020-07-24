@@ -17,7 +17,7 @@ This app was built with the following tools and libraries:
 * [Heroku](https://devcenter.heroku.com/categories/reference)
 * [PostgreSQL](https://www.postgresql.org/docs/)
 * [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html)
-* [Amazon AWS Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html)
+* [AWS Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html)
 
 
 
